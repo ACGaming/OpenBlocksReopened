@@ -14,11 +14,11 @@ buildscript {
         // Minecraft Forge
         maven {
             name = 'Forge'
-            url = 'http://files.minecraftforge.net/maven'
+            url = 'https://files.minecraftforge.net/maven'
         }
         maven {
               name 'OpenMods Third Party'
-              url 'http://repo.openmods.info/artifactory/simple/thirdparty'
+              url 'https://repo.openmods.info/artifactory/simple/thirdparty'
         }
     }
 
