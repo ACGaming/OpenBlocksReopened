@@ -104,7 +104,7 @@ If you're running a RedHat based system, such as **CentOS** or **Fedora** (or so
 OpenBlocks uses Forge Gradle build system, as almost any other mod this days. There are few good tutorials, so we will include just basic command for building:
 
 ```
-./gradle build
+./gradlew build
 ```
 
 The resulting files should be in the `build/lib` folder. File ending with `-deobf` is unobfuscated version for development use.
