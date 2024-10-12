@@ -47,6 +47,7 @@ public class TileEntityGrave extends SyncedTileEntity implements IPlaceAwareTile
 	private ITextComponent deathMessage;
 
 	private GenericInventory inventory = registerInventoryCallback(new GenericInventory("grave", false, 1));
+	private int xp;
 
 	public TileEntityGrave() {}
 
@@ -78,6 +79,10 @@ public class TileEntityGrave extends SyncedTileEntity implements IPlaceAwareTile
 		return perishedUsername.getValue();
 	}
 
+	public int getXP() {
+		return xp;
+	}
+
 	public void setDeathMessage(ITextComponent msg) {
 		deathMessage = msg.createCopy();
 	}
@@ -89,6 +94,10 @@ public class TileEntityGrave extends SyncedTileEntity implements IPlaceAwareTile
 	public void setLoot(IInventory invent) {
 		inventory.clearAndSetSlotCount(invent.getSizeInventory());
 		inventory.copyFrom(invent);
+	}
+
+	public void setXP(int xp) {
+		this.xp = xp;
 	}
 
 	@Override
@@ -109,6 +118,7 @@ public class TileEntityGrave extends SyncedTileEntity implements IPlaceAwareTile
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		tag = super.writeToNBT(tag);
 		inventory.writeToNBT(tag);
+		tag.setInteger("xp", xp);
 
 		if (deathMessage != null) {
 			String serialized = ITextComponent.Serializer.componentToJson(deathMessage);
@@ -122,6 +132,7 @@ public class TileEntityGrave extends SyncedTileEntity implements IPlaceAwareTile
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
 		inventory.readFromNBT(tag);
+		xp = tag.getInteger("xp");
 
 		String serializedMsg = tag.getString(TAG_MESSAGE);
 

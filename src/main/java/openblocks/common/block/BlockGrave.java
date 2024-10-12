@@ -10,6 +10,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -18,6 +19,7 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import openblocks.Config;
+import openblocks.common.tileentity.TileEntityGrave;
 import openmods.Log;
 import openmods.block.OpenBlock;
 import openmods.utils.BlockNotifyFlags;
@@ -89,6 +91,14 @@ public class BlockGrave extends OpenBlock.FourDirections {
 
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		TileEntityGrave grave = getTileEntity(world, pos, TileEntityGrave.class);
+		if (grave != null) {
+			int xp = grave.getXP();
+			if (xp > 0) {
+				world.spawnEntity(new EntityXPOrb(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, xp));
+				Log.log(debugLevel(), "Grave @ (%s) dimension = %d dropped %d XP", pos, world.provider.getDimension(), xp);
+			}
+		}
 		super.breakBlock(world, pos, state);
 		Log.log(debugLevel(), "Grave @ (%s) dimension = %d destroyed", pos, world.provider.getDimension());
 	}

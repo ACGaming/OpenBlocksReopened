@@ -149,7 +149,9 @@ public class PlayerDeathHandler {
 
 		private final WeakReference<EntityPlayer> exPlayer;
 
-		public GraveCallable(World world, EntityPlayer exPlayer, List<EntityItem> loot) {
+		private final int xp;
+
+		public GraveCallable(World world, EntityPlayer exPlayer, List<EntityItem> loot, int xp) {
 			this.playerPos = exPlayer.getPosition();
 
 			this.world = new WeakReference<>(world);
@@ -162,6 +164,7 @@ public class PlayerDeathHandler {
 			this.cause = new TextComponentTranslation("openblocks.misc.grave_msg", deathCause, day);
 
 			this.loot = ImmutableList.copyOf(loot);
+			this.xp = xp;
 		}
 
 		private static ITextComponent formatDate(World world) {
@@ -177,6 +180,7 @@ public class PlayerDeathHandler {
 			meta.setString(PlayerInventoryStore.TAG_PLAYER_UUID, stiffId.getId().toString());
 			meta.setTag("PlayerLocation", NbtUtils.store(playerPos));
 			meta.setBoolean("Placed", placed);
+			meta.setInteger("XP", xp);
 		}
 
 		private boolean tryPlaceGrave(World world, final BlockPos gravePos, String gravestoneText, ITextComponent deathMessage) {
@@ -202,6 +206,7 @@ public class PlayerDeathHandler {
 			grave.setUsername(gravestoneText);
 			grave.setLoot(loot);
 			grave.setDeathMessage(deathMessage);
+			grave.setXP(xp);
 			return true;
 		}
 
@@ -388,10 +393,15 @@ public class PlayerDeathHandler {
 			return;
 		}
 
+		int xp = player.experienceTotal;
+		player.experienceTotal = 0;
+		player.experience = 0;
+		player.experienceLevel = 0;
+
 		Log.log(debugLevel(), "Scheduling grave placement for player '%s':'%s' with %d item(s) stored and %d item(s) dropped",
 				player, player.getGameProfile(), graveLoot.size(), drops.size());
 
-		DelayedActionTickHandler.INSTANCE.addTickCallback(world, new GraveCallable(world, player, graveLoot));
+		DelayedActionTickHandler.INSTANCE.addTickCallback(world, new GraveCallable(world, player, graveLoot, xp));
 	}
 
 	// TODO: candidate for scripting
