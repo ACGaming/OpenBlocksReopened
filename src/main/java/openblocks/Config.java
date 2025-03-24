@@ -26,6 +26,10 @@ public class Config {
 	@ConfigProperty(category = "dropblock", name = "ignoreAllBlocks", comment = "Disable limit of blocks between elevators (equivalent to maxPassThrough = infinity)")
 	public static boolean elevatorIgnoreBlocks = false;
 
+    @OnLineModifiable
+    @ConfigProperty(category = "dropblock", name = "ignoreColor", comment = "Disable color matching requirement of elevators")
+    public static boolean elevatorIgnoreColor = false;
+
 	@OnLineModifiable
 	@ConfigProperty(category = "dropblock", name = "ignoreHalfBlocks", comment = "The elevator will ignore half blocks when counting the blocks it can pass through")
 	public static boolean elevatorIgnoreHalfBlocks = false;

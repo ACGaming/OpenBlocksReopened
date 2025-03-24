@@ -89,7 +89,7 @@ public class ElevatorActionHandler {
 
 			if (elevatorCheckResult.isElevator()) {
 				final EnumDyeColor otherColor = elevatorCheckResult.getColor();
-				if (otherColor == thisColor && canTeleportPlayer(player, world, searchPos.up())) {
+				if ((Config.elevatorIgnoreColor || otherColor == thisColor) && canTeleportPlayer(player, world, searchPos.up())) {
 					final PlayerRotation rotation = elevatorCheckResult.getRotation();
 					return new SearchResult(searchPos, rotation);
 				}
