@@ -28,6 +28,7 @@ public class ItemHangGlider extends Item implements IStateItem {
 
 	public ItemHangGlider() {
 		addPropertyOverride(new ResourceLocation("hidden"), (@Nonnull ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) -> EntityHangGlider.isHeldStackDeployedGlider(entityIn, stack)? 2 : 0);
+        setMaxStackSize(1);
 	}
 
 	public static final IProperty<Boolean> deployedProperty = PropertyBool.create("deployed");
