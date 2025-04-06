@@ -52,7 +52,7 @@ public class TileEntityXPDrain extends OpenTileEntity implements ITickable {
 		int playerXP = EnchantmentUtils.getPlayerXP(player);
 		if (playerXP <= 0) return;
 
-		int maxDrainedXp = Math.min(4, playerXP);
+		int maxDrainedXp = Math.min(player.isSneaking() ? 8 : 4, playerXP);
 
 		int xpAmount = FluidXpUtils.xpJuiceConverter.xpToFluid(maxDrainedXp);
 		FluidStack xpStack = new FluidStack(OpenBlocks.Fluids.xpJuice, xpAmount);
