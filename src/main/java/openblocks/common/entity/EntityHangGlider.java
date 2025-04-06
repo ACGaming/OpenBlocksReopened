@@ -245,10 +245,8 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 
 	public double getNoise() {
 		double noise = noiseGen.getValue(player.posX / 20f, player.posZ / 20f) / 4d;
-		final boolean strong = (noise > 0.7? true : false);
-		final int bonus = (strong? THERMAL_STRONG_BONUS_HEIGTH : 0);
-		final BlockPos pos = player.getPosition();
-		final float biomeRain = world.getBiomeForCoordsBody(pos).getRainfall();
+		final boolean strong = noise > 0.7;
+		final int bonus = (strong ? THERMAL_STRONG_BONUS_HEIGTH : 0);
 
 		noise *= Math.min((Math.max((player.posY - THERMAL_HEIGTH_MIN), 0d) / (THERMAL_HEIGTH_OPT - THERMAL_HEIGTH_MIN)), 1d);
 		noise *= Math.min((Math.max((THERMAL_HEIGTH_MAX + bonus - player.posY), 0d) / (THERMAL_HEIGTH_MAX - THERMAL_HEIGTH_OPT + bonus / 4)), 1d);
@@ -259,8 +257,8 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 
 		if (player.dimension != 0)
 			noise = 0;
-		else if (world.isRaining() && !strong && world.canSeeSky(pos))
-			noise = (biomeRain > 0? -0.5 : 0);
+		if (world.isRaining() && !strong && player.isWet())
+			noise = -0.5;
 		return noise;
 	}
 
