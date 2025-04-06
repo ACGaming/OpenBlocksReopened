@@ -3,6 +3,7 @@ package openblocks.common.tileentity;
 import java.util.Random;
 import javax.annotation.Nonnull;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFarmland;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
@@ -88,12 +89,15 @@ public class TileEntitySprinkler extends SyncedTileEntity implements ISurfaceAtt
 		if (!(world instanceof WorldServer)) return;
 		final int fertilizerChance = hasBonemeal? Config.sprinklerBonemealFertizizeChance : Config.sprinklerFertilizeChance;
 		if (RANDOM.nextDouble() < 1.0 / fertilizerChance) {
-			FakePlayerPool.instance.executeOnPlayer((WorldServer)world, (PlayerUser)fakePlayer -> {
+			FakePlayerPool.instance.executeOnPlayer((WorldServer)world, fakePlayer -> {
 				final int x = selectFromRange(Config.sprinklerEffectiveRange);
 				final int z = selectFromRange(Config.sprinklerEffectiveRange);
 
 				for (int y = -1; y <= 1; y++) {
 					BlockPos target = pos.add(x, y, z);
+
+					if (world.getBlockState(target).getBlock() instanceof BlockFarmland)
+						world.setBlockState(target, world.getBlockState(target).withProperty(BlockFarmland.MOISTURE, 7), 2);
 
 					if (ItemDye.applyBonemeal(BONEMEAL.copy(), world, target, fakePlayer, EnumHand.MAIN_HAND))
 						break;
