@@ -172,11 +172,11 @@ public class MagnetWhitelists {
 		final IBlockState blockState = world.getBlockState(pos);
 		final Block block = blockState.getBlock();
 
-		if (blockState.getBlock().isAir(blockState, world, pos)) return false;
+		if (block.isAir(blockState, world, pos)) return false;
 
-		if (block instanceof BlockContainer) {
+		if (block.hasTileEntity(blockState)) {
 			TileEntity te = world.getTileEntity(pos);
-			return (te != null)? tileEntityWhitelist.check(te) : false;
+			return te != null && tileEntityWhitelist.check(te);
 		}
 
 		return blockWhitelist.check(new BlockCoords(blockState, world, pos));
