@@ -26,7 +26,7 @@ public class BlockSprinkler extends OpenBlock.TwoDirections {
 	private static final AxisAlignedBB AABB = new AxisAlignedBB(0.3, 0.0, 0.0, 0.7, 0.3, 1.0);
 
 	public BlockSprinkler() {
-		super(Material.WATER);
+		super(Material.IRON);
 		setDefaultState(getDefaultState().withProperty(BlockLiquid.LEVEL, 1).withProperty(Properties.StaticProperty, true));
 	}
 

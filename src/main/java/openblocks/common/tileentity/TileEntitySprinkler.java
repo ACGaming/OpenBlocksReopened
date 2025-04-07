@@ -1,11 +1,10 @@
 package openblocks.common.tileentity;
 
-import java.util.Random;
 import javax.annotation.Nonnull;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFarmland;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
@@ -13,11 +12,15 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.FarmlandWaterManager;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.ticket.AABBTicket;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -30,7 +33,6 @@ import openmods.api.IHasGui;
 import openmods.api.INeighbourAwareTile;
 import openmods.api.ISurfaceAttachment;
 import openmods.fakeplayer.FakePlayerPool;
-import openmods.fakeplayer.FakePlayerPool.PlayerUser;
 import openmods.fixers.GenericInventoryTeFixerWalker;
 import openmods.fixers.RegisterFixer;
 import openmods.include.IncludeInterface;
@@ -48,14 +50,16 @@ public class TileEntitySprinkler extends SyncedTileEntity implements ISurfaceAtt
 
 	private static final ItemStack BONEMEAL = new ItemStack(Items.DYE, 1, 15);
 
-	private static final Random RANDOM = new Random();
-
 	private static final double[] SPRINKER_DELTA = new double[] { 0.2, 0.25, 0.5 };
 	private static final int[] SPRINKER_MOD = new int[] { 1, 5, 20 };
 
 	private boolean hasBonemeal = false;
 
 	private boolean needsTankUpdate;
+
+	private AABBTicket waterTicket;
+
+	private int soundCounter;
 
 	public enum Flags {
 		enabled
@@ -81,23 +85,20 @@ public class TileEntitySprinkler extends SyncedTileEntity implements ISurfaceAtt
 		tank = new SyncableTank(Config.sprinklerInternalTank, FluidRegistry.WATER);
 	}
 
-	private static int selectFromRange(int range) {
-		return RANDOM.nextInt(2 * range + 1) - range;
+	private int selectFromRange(int range) {
+		return world.rand.nextInt(2 * range + 1) - range;
 	}
 
 	private void attemptFertilize() {
 		if (!(world instanceof WorldServer)) return;
-		final int fertilizerChance = hasBonemeal? Config.sprinklerBonemealFertizizeChance : Config.sprinklerFertilizeChance;
-		if (RANDOM.nextDouble() < 1.0 / fertilizerChance) {
+		final int fertilizerChance = hasBonemeal? Config.sprinklerBonemealFertilizeChance : Config.sprinklerFertilizeChance;
+		if (world.rand.nextDouble() < 1.0 / fertilizerChance) {
 			FakePlayerPool.instance.executeOnPlayer((WorldServer)world, fakePlayer -> {
 				final int x = selectFromRange(Config.sprinklerEffectiveRange);
 				final int z = selectFromRange(Config.sprinklerEffectiveRange);
 
 				for (int y = -1; y <= 1; y++) {
 					BlockPos target = pos.add(x, y, z);
-
-					if (world.getBlockState(target).getBlock() instanceof BlockFarmland)
-						world.setBlockState(target, world.getBlockState(target).withProperty(BlockFarmland.MOISTURE, 7), 2);
 
 					if (ItemDye.applyBonemeal(BONEMEAL.copy(), world, target, fakePlayer, EnumHand.MAIN_HAND))
 						break;
@@ -147,7 +148,7 @@ public class TileEntitySprinkler extends SyncedTileEntity implements ISurfaceAtt
 			double outletPosition = -0.5;
 
 			while (outletPosition <= 0.5) {
-				final double spraySideVelocity = Math.sin(SPRAY_SIDE_SCATTER * (RANDOM.nextDouble() - 0.5));
+				final double spraySideVelocity = Math.sin(SPRAY_SIDE_SCATTER * (world.rand.nextDouble() - 0.5));
 
 				final double sideVelocityX = spraySideVelocity * offsetX;
 				final double sideVelocityZ = spraySideVelocity * offsetZ;
@@ -198,6 +199,11 @@ public class TileEntitySprinkler extends SyncedTileEntity implements ISurfaceAtt
 		if (isEnabled()) {
 			if (world.isRemote) sprayParticles();
 			else attemptFertilize();
+
+			if (world.rand.nextInt(3) < soundCounter++) {
+				soundCounter = 0;
+				world.playSound(null, pos, SoundEvents.WEATHER_RAIN, SoundCategory.WEATHER, 0.2F, 1.5F);
+			}
 		}
 	}
 
@@ -215,10 +221,29 @@ public class TileEntitySprinkler extends SyncedTileEntity implements ISurfaceAtt
 
 	private void setEnabled(boolean b) {
 		flags.set(Flags.enabled, b);
+		if (b) {
+			addWaterTicket();
+		} else {
+			removeWaterTicket();
+		}
 	}
 
 	private boolean isEnabled() {
 		return flags.get(Flags.enabled);
+	}
+
+	private void addWaterTicket() {
+		if (!world.isRemote && (waterTicket == null || !waterTicket.isValid())) {
+			AxisAlignedBB area = new AxisAlignedBB(pos).grow(Config.sprinklerEffectiveRange, 1, Config.sprinklerEffectiveRange);
+			waterTicket = FarmlandWaterManager.addAABBTicket(getWorld(), area);
+		}
+	}
+
+	private void removeWaterTicket() {
+		if (!world.isRemote && waterTicket != null && waterTicket.isValid()) {
+			waterTicket.invalidate();
+			waterTicket = null;
+		}
 	}
 
 	@Override
@@ -260,6 +285,12 @@ public class TileEntitySprinkler extends SyncedTileEntity implements ISurfaceAtt
 	public void validate() {
 		super.validate();
 		this.needsTankUpdate = true;
+	}
+
+	@Override
+	public void invalidate() {
+		super.invalidate();
+		removeWaterTicket();
 	}
 
 	@Override

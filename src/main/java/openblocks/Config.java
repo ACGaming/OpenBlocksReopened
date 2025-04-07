@@ -97,7 +97,7 @@ public class Config {
 
 	@OnLineModifiable
 	@ConfigProperty(category = "sprinkler", name = "bonemealFertilizeChance", comment = "1/chance that crops will be fertilized with bonemeal")
-	public static int sprinklerBonemealFertizizeChance = 200;
+	public static int sprinklerBonemealFertilizeChance = 200;
 
 	@OnLineModifiable
 	@ConfigProperty(category = "sprinkler", name = "effectiveRange", comment = "The range in each cardinal direction that crops will be affected.")
