@@ -202,7 +202,7 @@ public class TileEntitySprinkler extends SyncedTileEntity implements ISurfaceAtt
 
 			if (world.rand.nextInt(3) < soundCounter++) {
 				soundCounter = 0;
-				world.playSound(null, pos, SoundEvents.WEATHER_RAIN, SoundCategory.WEATHER, 0.2F, 1.5F);
+				world.playSound(null, pos, SoundEvents.WEATHER_RAIN, SoundCategory.BLOCKS, 0.2F, 1.5F);
 			}
 		}
 	}
