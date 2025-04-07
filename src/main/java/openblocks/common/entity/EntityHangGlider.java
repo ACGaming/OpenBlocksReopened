@@ -1,12 +1,11 @@
 package openblocks.common.entity;
 
-import com.google.common.collect.MapMaker;
 import io.netty.buffer.ByteBuf;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import javax.annotation.Nonnull;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +16,6 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
@@ -51,23 +49,23 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 	public static final int BEEP_RATE_AVG = 4;
 	public static final int BEEP_RATE_MAX = 24;
 
-	private static final DataParameter<Boolean> PROPERTY_DEPLOYED = EntityDataManager.<Boolean> createKey(EntityHangGlider.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> PROPERTY_DEPLOYED = EntityDataManager.createKey(EntityHangGlider.class, DataSerializers.BOOLEAN);
 
-	private static Map<EntityPlayer, EntityHangGlider> gliderMap = new MapMaker().weakKeys().weakValues().makeMap();
+	private static final Map<EntityPlayer, EntityHangGlider> GLIDER_MAP = new HashMap<>();
 
 	private IVarioController varioControl = IVarioController.NULL;
 
 	public static boolean isHeldStackDeployedGlider(EntityLivingBase player, @Nonnull ItemStack heldStack) {
 		if (player == null) return false;
 
-		EntityHangGlider glider = gliderMap.get(player);
+		EntityHangGlider glider = GLIDER_MAP.get(player);
 		if (glider == null || glider.handHeld == null) return false;
 		// identity check, since we require exact instance
 		return player.getHeldItem(glider.handHeld) == heldStack;
 	}
 
 	public static boolean isGliderDeployed(Entity player) {
-		EntityHangGlider glider = gliderMap.get(player);
+		EntityHangGlider glider = GLIDER_MAP.get(player);
 		return glider != null && glider.isDeployed();
 	}
 
@@ -75,9 +73,12 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 		return !stack.isEmpty() && stack.getItem() instanceof ItemHangGlider;
 	}
 
+	public static EntityHangGlider getEntityHangGlider(Entity player) {
+		return GLIDER_MAP.get(player);
+	}
+
 	private static boolean isGliderValid(EntityPlayer player, EntityHangGlider glider) {
 		if (player == null || player.isDead || glider == null || glider.isDead) return false;
-
 		if (glider.handHeld == null || !isItemHangglider(player.getHeldItem(glider.handHeld))) return false;
 		if (player.world.provider.getDimension() != glider.world.provider.getDimension()) return false;
 		if (player.isElytraFlying() || player.isSpectator()) return false;
@@ -85,11 +86,11 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static void updateGliders(World world) {
-		for (Map.Entry<EntityPlayer, EntityHangGlider> e : gliderMap.entrySet()) {
+	public static void updateGliders() {
+		for (Map.Entry<EntityPlayer, EntityHangGlider> e : GLIDER_MAP.entrySet()) {
 			EntityPlayer player = e.getKey();
 			EntityHangGlider glider = e.getValue();
-			if (isGliderValid(player, glider)) glider.fixPositions(player, player instanceof EntityPlayerSP);
+			if (isGliderValid(player, glider)) glider.fixPositions();
 			else glider.setDead();
 		}
 	}
@@ -120,7 +121,7 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 
 		if (e instanceof EntityPlayer) {
 			player = (EntityPlayer)e;
-			gliderMap.put(player, this);
+			GLIDER_MAP.put(player, this);
 
 			if (OpenMods.proxy.isClientPlayer(player))
 				varioControl = Vario.instance.acquire();
@@ -140,6 +141,7 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 			data.writeInt(-42);
 		} else {
 			data.writeInt(player.getEntityId());
+			GLIDER_MAP.put(player, this);
 		}
 
 		final PacketBuffer buf = new PacketBuffer(data);
@@ -162,7 +164,7 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 		}
 
 		if (isDead) {
-			gliderMap.remove(player);
+			GLIDER_MAP.remove(player);
 			return;
 		}
 
@@ -172,7 +174,7 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 
 		if (!world.isRemote) {
 			this.dataManager.set(PROPERTY_DEPLOYED, isDeployed);
-			fixPositions(player, false);
+			fixPositions();
 		}
 
 		if (isDeployed) {
@@ -265,7 +267,7 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 	@Override
 	public void setDead() {
 		super.setDead();
-		gliderMap.remove(player);
+		GLIDER_MAP.remove(player);
 
 		if (varioControl.isValid()) {
 			varioControl.kill();
@@ -275,7 +277,7 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 		}
 	}
 
-	private void fixPositions(EntityPlayer thePlayer, boolean localPlayer) {
+	private void fixPositions() {
 		this.lastTickPosX = prevPosX = player.prevPosX;
 		this.lastTickPosY = prevPosY = player.prevPosY;
 		this.lastTickPosZ = prevPosZ = player.prevPosZ;
@@ -307,8 +309,7 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 	protected void writeEntityToNBT(NBTTagCompound nbttagcompound) {}
 
 	@Override
-	public boolean writeToNBTOptional(NBTTagCompound p_70039_1_) {
+	public boolean writeToNBTOptional(NBTTagCompound nbttagcompound) {
 		return false;
 	}
-
 }

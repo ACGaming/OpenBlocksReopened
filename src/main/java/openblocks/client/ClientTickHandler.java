@@ -1,7 +1,6 @@
 package openblocks.client;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
@@ -15,12 +14,8 @@ public class ClientTickHandler {
 	@SubscribeEvent
 	public void onRenderTickStart(TickEvent.RenderTickEvent evt) {
 		if (evt.phase == Phase.START && Minecraft.getMinecraft().world != null) {
-			preRenderTick(Minecraft.getMinecraft(), Minecraft.getMinecraft().world, evt.renderTickTime);
+			EntityHangGlider.updateGliders();
 		}
-	}
-
-	public void preRenderTick(Minecraft mc, World world, float renderTick) {
-		EntityHangGlider.updateGliders(world);
 	}
 
 	@SubscribeEvent
