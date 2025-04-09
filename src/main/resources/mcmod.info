@@ -4,7 +4,7 @@
   [
     {
       "modid": "openblocks",
-      "name": "OpenBlocks",
+      "name": "OpenBlocks Legacy",
       "description": "All the things you never thought you will ever need",
       "version": "${version}",
       "mcversion": "${mc_version}",
@@ -14,7 +14,8 @@
         "Mikee",
         "NeverCast",
         "boq",
-        "Lyqyd"
+        "Lyqyd",
+        "ACGaming"
       ],
       "credits": "",
       "logoFile": "",
