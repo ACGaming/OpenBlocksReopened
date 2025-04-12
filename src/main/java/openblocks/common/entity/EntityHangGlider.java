@@ -2,9 +2,9 @@ package openblocks.common.entity;
 
 import io.netty.buffer.ByteBuf;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.Nonnull;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -51,7 +51,7 @@ public class EntityHangGlider extends Entity implements IEntityAdditionalSpawnDa
 
 	private static final DataParameter<Boolean> PROPERTY_DEPLOYED = EntityDataManager.createKey(EntityHangGlider.class, DataSerializers.BOOLEAN);
 
-	private static final Map<EntityPlayer, EntityHangGlider> GLIDER_MAP = new HashMap<>();
+	private static final Map<EntityPlayer, EntityHangGlider> GLIDER_MAP = new ConcurrentHashMap<>();
 
 	private IVarioController varioControl = IVarioController.NULL;
 
