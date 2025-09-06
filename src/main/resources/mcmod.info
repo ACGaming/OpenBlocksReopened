@@ -4,8 +4,8 @@
   [
     {
       "modid": "openblocks",
-      "name": "OpenBlocks Legacy",
-      "description": "All the things you never thought you will ever need",
+      "name": "OpenBlocks Reopened",
+      "description": "An open source random collection of blocks and miscellaneous cool stuff",
       "version": "${version}",
       "mcversion": "${mc_version}",
       "url": "http://openmods.info/",
