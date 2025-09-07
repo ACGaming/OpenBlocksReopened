@@ -242,7 +242,7 @@ import openmods.utils.EnchantmentUtils;
 public class OpenBlocks {
 
 	public static final String MODID = "openblocks";
-	public static final String NAME = "OpenBlocks";
+	public static final String NAME = "OpenBlocks Reopened";
 	public static final String VERSION = "$VERSION$";
 	public static final String PROXY_SERVER = "openblocks.common.ServerProxy";
 	public static final String PROXY_CLIENT = "openblocks.client.ClientProxy";
