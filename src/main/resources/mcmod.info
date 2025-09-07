@@ -8,7 +8,7 @@
       "description": "An open source random collection of blocks and miscellaneous cool stuff",
       "version": "${version}",
       "mcversion": "${mc_version}",
-      "url": "http://openmods.info/",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/openblocks-reopened",
       "updateUrl": "",
       "authorList": [
         "Mikee",
