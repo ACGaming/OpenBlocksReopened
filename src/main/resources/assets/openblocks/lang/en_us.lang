@@ -11,8 +11,11 @@ openblocks.keybind.vario_vol_up=Vario volume up
 openblocks.keybind.vario_vol_down=Vario volume down
 
 enchantment.openblocks.explosive=Unstable
+enchantment.openblocks.explosive.desc=Triggers explosions of varying size when jumping or taking damage.
 enchantment.openblocks.laststand=Last Stand
+enchantment.openblocks.last_stand.desc=Instead of dying when taking fatal damage, the player is left with 1 health at the cost of experience, costs based on damage and reduced by the total level of Last Stand on all equipment.
 enchantment.openblocks.flimflam=Flim Flam
+enchantment.openblocks.flim_flam.desc=Causes a number of negative effects to nearby players.
 
 openblocks.gui.blocks=Blocks
 openblocks.gui.items=Items
