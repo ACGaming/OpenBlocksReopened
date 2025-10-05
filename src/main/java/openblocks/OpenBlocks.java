@@ -238,7 +238,7 @@ import openmods.sync.SyncableObjectType;
 import openmods.sync.SyncableObjectTypeRegistry;
 import openmods.utils.EnchantmentUtils;
 
-@Mod(modid = OpenBlocks.MODID, name = OpenBlocks.NAME, version = OpenBlocks.VERSION, dependencies = OpenBlocks.DEPENDENCIES, guiFactory = OpenBlocks.GUI_FACTORY, updateJSON = OpenBlocks.UPDATE_JSON, certificateFingerprint = OpenMods.CERTIFICATE_FINGERPRINT)
+@Mod(modid = OpenBlocks.MODID, name = OpenBlocks.NAME, version = OpenBlocks.VERSION, dependencies = OpenBlocks.DEPENDENCIES, guiFactory = OpenBlocks.GUI_FACTORY, certificateFingerprint = OpenMods.CERTIFICATE_FINGERPRINT)
 public class OpenBlocks {
 
 	public static final String MODID = "openblocks";
@@ -246,9 +246,8 @@ public class OpenBlocks {
 	public static final String VERSION = "$VERSION$";
 	public static final String PROXY_SERVER = "openblocks.common.ServerProxy";
 	public static final String PROXY_CLIENT = "openblocks.client.ClientProxy";
-	public static final String DEPENDENCIES = "required:forge@[14.23.4.2705,);required-after:openmods@[$LIB-VERSION$,$NEXT-LIB-VERSION$)";
+	public static final String DEPENDENCIES = "required-after:openmods";
 	public static final String GUI_FACTORY = "openblocks.client.ModGuiFactory";
-	public static final String UPDATE_JSON = "http://openmods.info/versions/openblocks.json"; // HTTP, for wider support
 
 	private static final int ENTITY_HANGGLIDER_ID = 701;
 	private static final int ENTITY_LUGGAGE_ID = 702;
@@ -620,7 +619,7 @@ public class OpenBlocks {
 	private static CreativeTabs createTabOpenBlocks() {
 		return new CreativeTabs("tabOpenBlocks") {
 			@Override
-			public ItemStack getTabIconItem() {
+			public ItemStack createIcon() {
 				if (OpenBlocks.Blocks.flag != null) {
 					return new ItemStack(OpenBlocks.Blocks.flag, 1, BlockFlag.DEFAULT_COLOR.vanillaBlockId);
 				} else {

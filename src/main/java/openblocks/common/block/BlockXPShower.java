@@ -92,7 +92,7 @@ public class BlockXPShower extends OpenBlock.FourDirections {
 
 	private static void updateRedstone(World world, BlockPos blockPos, IBlockState state) {
 		if (world.isRemote) return;
-		boolean isPowered = world.isBlockIndirectlyGettingPowered(blockPos) > 0;
+		boolean isPowered = world.getRedstonePowerFromNeighbors(blockPos) > 0;
 		final IBlockState newState = state.withProperty(POWERED, isPowered);
 		if (state != newState) world.setBlockState(blockPos, newState, BlockNotifyFlags.ALL);
 	}

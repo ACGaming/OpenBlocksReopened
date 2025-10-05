@@ -77,7 +77,7 @@ public class BlockSky extends OpenBlock {
 
 	private void updatePowerState(IBlockState state, World world, BlockPos pos) {
 		if (!world.isRemote) {
-			final boolean isPowered = world.isBlockIndirectlyGettingPowered(pos) > 0;
+			final boolean isPowered = world.getRedstonePowerFromNeighbors(pos) > 0;
 			final boolean isActive = state.getValue(POWERED);
 
 			if (isPowered != isActive) world.scheduleUpdate(pos, this, 1);
@@ -86,7 +86,7 @@ public class BlockSky extends OpenBlock {
 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random random) {
-		final boolean isPowered = world.isBlockIndirectlyGettingPowered(pos) > 0;
+		final boolean isPowered = world.getRedstonePowerFromNeighbors(pos) > 0;
 
 		world.setBlockState(pos, state.withProperty(POWERED, isPowered));
 	}

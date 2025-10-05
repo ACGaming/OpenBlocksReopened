@@ -96,7 +96,7 @@ public class TileEntityCannon extends SyncedTileEntity implements IPointable, IS
 
 		if (!world.isRemote) {
 			if (world.getTotalWorldTime() % 20 == 0) {
-				if (world.isBlockIndirectlyGettingPowered(pos) > 0) {
+				if (world.getRedstonePowerFromNeighbors(pos) > 0) {
 					ItemStack stack = findStack();
 					if (!stack.isEmpty()) fireStack(stack);
 				}
@@ -195,14 +195,14 @@ public class TileEntityCannon extends SyncedTileEntity implements IPointable, IS
 
 	private void checkOrigin() {
 		if (projectileOrigin == null) {
-			projectileOrigin = new Vec3d(pos).addVector(0.5, 0, 0.5);
+			projectileOrigin = new Vec3d(pos).add(0.5, 0, 0.5);
 		}
 	}
 
 	public void setTarget(BlockPos pos) {
 		checkOrigin();
 		// We target the middle of the block, at the very top.
-		final Vec3d target = new Vec3d(pos).addVector(0.5, 1, 0.5);
+		final Vec3d target = new Vec3d(pos).add(0.5, 1, 0.5);
 
 		// Horizontal distance between the origin and target
 		final double distHorizontal = KNOB_LOB_HORIZONTAL_MUL * Math.sqrt(
@@ -221,7 +221,7 @@ public class TileEntityCannon extends SyncedTileEntity implements IPointable, IS
 		final Vec3d velocity = TileEntityCannonLogic.calculateTrajectory(projectileOrigin, target, lobScale);
 
 		// m/s applied to item.
-		final double speed = velocity.lengthVector();
+		final double speed = velocity.length();
 		targetSpeed.set(speed);
 
 		// reverse the vector to angles for cannon model

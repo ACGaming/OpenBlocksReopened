@@ -7,7 +7,7 @@
       "name": "OpenBlocks Reopened",
       "description": "An open source random collection of blocks and miscellaneous cool stuff",
       "version": "${version}",
-      "mcversion": "${mc_version}",
+      "mcversion": "${mcversion}",
       "url": "https://www.curseforge.com/minecraft/mc-mods/openblocks-reopened",
       "updateUrl": "",
       "authorList": [

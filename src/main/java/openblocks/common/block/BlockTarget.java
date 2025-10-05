@@ -76,10 +76,10 @@ public class BlockTarget extends OpenBlock.FourDirections {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (!world.isRemote && entity != null && entity instanceof EntityArrow) {
 			/**
-			 * onEntityCollidedWithBlock is called twice when the arrow is hit
+			 * onEntityCollision is called twice when the arrow is hit
 			 * The first is from the raytracing, which is predictive and
 			 * inaccurate The second is from the bounding box collision. We only
 			 * care about the second one
@@ -100,9 +100,9 @@ public class BlockTarget extends OpenBlock.FourDirections {
 
 		EnumFacing opposite = getFront(state).getOpposite();
 
-		double centerX = pos.getX() + 0.5 + (opposite.getFrontOffsetX() * 0.5);
-		double centerY = pos.getY() + 0.55 + (opposite.getFrontOffsetY() * 0.45);
-		double centerZ = pos.getZ() + 0.5 + (opposite.getFrontOffsetZ() * 0.5);
+		double centerX = pos.getX() + 0.5 + (opposite.getXOffset() * 0.5);
+		double centerY = pos.getY() + 0.55 + (opposite.getYOffset() * 0.45);
+		double centerZ = pos.getZ() + 0.5 + (opposite.getZOffset() * 0.5);
 
 		final Vec3d bullseye = new Vec3d(centerX, centerY, centerZ);
 
@@ -154,7 +154,7 @@ public class BlockTarget extends OpenBlock.FourDirections {
 	private static void updateRedstone(World world, BlockPos blockPos, IBlockState state) {
 		if (!(world instanceof WorldServer)) return;
 
-		boolean isPowered = world.isBlockIndirectlyGettingPowered(blockPos) > 0;
+		boolean isPowered = world.getRedstonePowerFromNeighbors(blockPos) > 0;
 
 		IBlockState newState = state.withProperty(POWERED, isPowered);
 		if (state != newState) {

@@ -203,7 +203,7 @@ public class EntityLuggage extends EntityTameable implements IEntityAdditionalSp
 			NBTTagCompound tagCopy = tag.copy();
 			tagCopy.removeTag(GenericInventory.TAG_SIZE);
 			tagCopy.removeTag(GenericInventory.TAG_ITEMS);
-			this.itemTag = tagCopy.hasNoTags()? null : tagCopy;
+			this.itemTag = tagCopy.isEmpty()? null : tagCopy;
 		}
 
 		if (stack.hasDisplayName()) setCustomNameTag(stack.getDisplayName());

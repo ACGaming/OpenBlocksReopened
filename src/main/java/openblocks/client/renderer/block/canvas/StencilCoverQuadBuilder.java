@@ -94,7 +94,7 @@ public class StencilCoverQuadBuilder {
 					builder.put(e, position.x, position.y, position.z);
 					break;
 				case NORMAL:
-					builder.put(e, face.getFrontOffsetX(), face.getFrontOffsetY(), face.getFrontOffsetZ());
+					builder.put(e, face.getXOffset(), face.getYOffset(), face.getZOffset());
 					break;
 				case COLOR:
 					builder.put(e, 1, 1, 1, 1);

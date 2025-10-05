@@ -61,7 +61,7 @@ public class BlockBearTrap extends OpenBlock.TwoDirections {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		TileEntityBearTrap te = getTileEntity(world, pos, TileEntityBearTrap.class);
 		if (te != null) te.onEntityCollided(entity);
 	}

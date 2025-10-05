@@ -224,13 +224,13 @@ public class ItemImaginary extends ItemOpenBlock {
 	}
 
 	@Override
-	public String getUnlocalizedName(@Nonnull ItemStack stack) {
+	public String getTranslationKey(@Nonnull ItemStack stack) {
 		NBTTagCompound tag = ItemUtils.getItemTag(stack);
 		return tag.hasKey(TAG_COLOR)? "item.openblocks.crayon" : "item.openblocks.pencil";
 	}
 
 	@Override
-	public String getUnlocalizedName() {
+	public String getTranslationKey() {
 		return "item.openblocks.imaginary";
 	}
 

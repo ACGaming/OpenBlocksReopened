@@ -32,7 +32,7 @@ public class MetaPointer extends MetaGeneric {
 		if (player.isSneaking()) {
 			Vec3d posVec = new Vec3d(player.posX, player.posY + 1.62F, player.posZ);
 			Vec3d lookVec = player.getLook(1.0f);
-			Vec3d targetVec = posVec.addVector(lookVec.x * 10f, lookVec.y * 10f, lookVec.z * 10f);
+			Vec3d targetVec = posVec.add(lookVec.x * 10f, lookVec.y * 10f, lookVec.z * 10f);
 
 			RayTraceResult movingObject = world.rayTraceBlocks(posVec, targetVec);
 

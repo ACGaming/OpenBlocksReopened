@@ -86,7 +86,7 @@ public class TileEntityBlockPlacer extends TileEntityBlockManipulator implements
 				stack,
 				new Vec3d(playerPos),
 				new Vec3d(target),
-				new Vec3d(target).addVector(0.5, 0.5, 0.5),
+				new Vec3d(target).add(0.5, 0.5, 0.5),
 				direction.getOpposite(),
 				EnumHand.MAIN_HAND));
 

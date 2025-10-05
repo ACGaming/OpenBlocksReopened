@@ -196,7 +196,7 @@ public class EntityMagnet extends EntitySmoothMove implements IEntityAdditionalS
 				setDead();
 				return;
 			} else if (owner != null) {
-				final Vec3d target = owner.getTarget().addVector(0, -height, 0);
+				final Vec3d target = owner.getTarget().add(0, -height, 0);
 				smoother.setTarget(target);
 			}
 		}

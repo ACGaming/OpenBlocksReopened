@@ -207,7 +207,7 @@ public class MagnetControlAdapter implements ITickingTurtle, IWorldProvider, IAt
 
 	private Vec3d getRelativeDistance(EntityMagnet magnet) {
 		Vec3d magnetPos = new Vec3d(magnet.posX, magnet.posY, magnet.posZ);
-		Vec3d turtlePos = new Vec3d(turtle.getPosition()).addVector(0.5, 0.5, 0.5);
+		Vec3d turtlePos = new Vec3d(turtle.getPosition()).add(0.5, 0.5, 0.5);
 
 		Vec3d dist = turtlePos.subtract(magnetPos);
 
@@ -247,7 +247,7 @@ public class MagnetControlAdapter implements ITickingTurtle, IWorldProvider, IAt
 		Preconditions.checkNotNull(magnet, "Magnet not active");
 
 		Vec3d magnetPos = new Vec3d(magnet.posX, magnet.posY, magnet.posZ);
-		Vec3d turtlePos = new Vec3d(turtle.getPosition()).addVector(0.5, 0.5, 0.5);
+		Vec3d turtlePos = new Vec3d(turtle.getPosition()).add(0.5, 0.5, 0.5);
 
 		Preconditions.checkState(!checkPosition || canOperateOnMagnet(magnetPos, turtlePos), "Magnet too far");
 

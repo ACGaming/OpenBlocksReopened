@@ -82,7 +82,7 @@ public class TileEntityFan extends SyncedTileEntity implements IPlaceAwareTile, 
 					entity.posZ - blockPos.z);
 
 			if (isLyingInSphericalCone(coneAxis, directionVec, CONE_HALF_APERTURE)) {
-				final double distToOrigin = directionVec.lengthVector();
+				final double distToOrigin = directionVec.length();
 				final double force = (1.0 - distToOrigin / Config.fanRange) * maxForce;
 				if (force <= 0) continue;
 				Vec3d normal = directionVec.normalize();
@@ -95,7 +95,7 @@ public class TileEntityFan extends SyncedTileEntity implements IPlaceAwareTile, 
 	private Vec3d getConeBaseCenter(double angle) {
 		// TODO this may be semi-constant
 		return new Vec3d(pos)
-				.addVector(
+				.add(
 						(Math.cos(angle) * Config.fanRange),
 						0.5,
 						(Math.sin(angle) * Config.fanRange));
@@ -103,7 +103,7 @@ public class TileEntityFan extends SyncedTileEntity implements IPlaceAwareTile, 
 
 	private Vec3d getConeApex(double angle) {
 		return new Vec3d(pos)
-				.addVector(
+				.add(
 						0.5 - Math.cos(angle) * 1.1,
 						0.5,
 						0.5 - Math.sin(angle) * 1.1);
@@ -115,7 +115,7 @@ public class TileEntityFan extends SyncedTileEntity implements IPlaceAwareTile, 
 	}
 
 	private static boolean isLyingInSphericalCone(Vec3d coneAxis, Vec3d originToTarget, double halfAperture) {
-		double angleToAxisCos = originToTarget.dotProduct(coneAxis) / originToTarget.lengthVector() / coneAxis.lengthVector();
+		double angleToAxisCos = originToTarget.dotProduct(coneAxis) / originToTarget.length() / coneAxis.length();
 		return angleToAxisCos > Math.cos(halfAperture);
 	}
 
@@ -146,7 +146,7 @@ public class TileEntityFan extends SyncedTileEntity implements IPlaceAwareTile, 
 
 	private void updateRedstone() {
 		if (!world.isRemote) {
-			int power = Config.redstoneActivatedFan? world.isBlockIndirectlyGettingPowered(pos) : 15;
+			int power = Config.redstoneActivatedFan? world.getRedstonePowerFromNeighbors(pos) : 15;
 			this.power.set((byte)power);
 			sync();
 		}

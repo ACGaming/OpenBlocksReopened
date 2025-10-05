@@ -89,7 +89,7 @@ public class TileEntityCanvas extends SyncedTileEntity implements IActivateAware
 
 		@Override
 		public boolean isSideSolid(BlockPos pos, EnumFacing side, boolean _default) {
-			final Chunk chunk = original.getChunkFromBlockCoords(pos);
+			final Chunk chunk = original.getChunk(pos);
 			if (chunk == null || chunk.isEmpty()) return _default;
 
 			final IBlockState state = getBlockState(pos);

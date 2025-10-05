@@ -101,7 +101,7 @@ public class EntityMiniMe extends EntityCreature implements IEntityAdditionalSpa
 
 	public EntityMiniMe(World world, GameProfile owner) {
 		this(world);
-		this.owner = owner != null? TileEntitySkull.updateGameprofile(owner) : null;
+		this.owner = owner != null? TileEntitySkull.updateGameProfile(owner) : null;
 	}
 
 	public EntityMiniMe(World world) {
@@ -164,7 +164,7 @@ public class EntityMiniMe extends EntityCreature implements IEntityAdditionalSpa
 		if (!world.isRemote) {
 			if (name != null && (owner == null || !name.equalsIgnoreCase(owner.getName()))) {
 				try {
-					this.owner = TileEntitySkull.updateGameprofile(new GameProfile(null, name));
+					this.owner = TileEntitySkull.updateGameProfile(new GameProfile(null, name));
 					propagateOwnerChange();
 				} catch (Exception e) {
 					Log.warn(e, "Failed to change skin to %s", name);
@@ -250,7 +250,7 @@ public class EntityMiniMe extends EntityCreature implements IEntityAdditionalSpa
 	private static GameProfile readOwner(NBTTagCompound tag) {
 		if (tag.hasKey("owner", Constants.NBT.TAG_STRING)) {
 			String ownerName = tag.getString("owner");
-			return TileEntitySkull.updateGameprofile(new GameProfile((UUID)null, ownerName));
+			return TileEntitySkull.updateGameProfile(new GameProfile((UUID)null, ownerName));
 		} else if (tag.hasKey("OwnerUUID", Constants.NBT.TAG_STRING)) {
 			final String uuidStr = tag.getString("OwnerUUID");
 			try {

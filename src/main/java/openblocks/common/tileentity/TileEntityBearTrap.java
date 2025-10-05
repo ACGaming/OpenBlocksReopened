@@ -173,7 +173,7 @@ public class TileEntityBearTrap extends SyncedTileEntity implements IActivateAwa
 
 	private void updateRedstone() {
 		if (!world.isRemote) {
-			boolean isLocked = world.isBlockIndirectlyGettingPowered(pos) > 0;
+			boolean isLocked = world.getRedstonePowerFromNeighbors(pos) > 0;
 			this.isLocked.set(isLocked);
 			if (isLocked) open();
 		}

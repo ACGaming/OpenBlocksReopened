@@ -42,7 +42,7 @@ public abstract class TileEntityBlockManipulator extends OpenTileEntity implemen
 		if (!world.isRemote) {
 			final IBlockState state = world.getBlockState(getPos());
 			if (state.getBlock() == getBlockType()) {
-				final boolean isPowered = world.isBlockIndirectlyGettingPowered(getPos()) > 0;
+				final boolean isPowered = world.getRedstonePowerFromNeighbors(getPos()) > 0;
 
 				final IBlockState newState = state.withProperty(BlockBlockManpulatorBase.POWERED, isPowered);
 				if (newState != state) {

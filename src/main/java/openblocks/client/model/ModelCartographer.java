@@ -137,7 +137,7 @@ public class ModelCartographer extends ModelBase {
 		final ByteBuffer buffer = ByteBuffer.allocate(vertexData.length * Ints.BYTES);
 		buffer.asIntBuffer().put(vertexData);
 
-		final int vertexSize = quad.getFormat().getNextOffset();
+		final int vertexSize = quad.getFormat().getSize();
 		buffer.limit(vertexData.length * Ints.BYTES);
 
 		for (int i = 0; i < 4; i++) {

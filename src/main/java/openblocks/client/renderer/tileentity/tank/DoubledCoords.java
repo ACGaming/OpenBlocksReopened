@@ -16,7 +16,7 @@ public class DoubledCoords {
 	}
 
 	public DoubledCoords(int baseX, int baseY, int baseZ, EnumFacing dir) {
-		this(2 * baseX + dir.getFrontOffsetX(), 2 * baseY + dir.getFrontOffsetY(), 2 * baseZ + dir.getFrontOffsetZ());
+		this(2 * baseX + dir.getXOffset(), 2 * baseY + dir.getYOffset(), 2 * baseZ + dir.getZOffset());
 	}
 
 	public DoubledCoords(BlockPos pos, EnumFacing dir) {
@@ -32,9 +32,9 @@ public class DoubledCoords {
 	}
 
 	public boolean isSameAs(int baseX, int baseY, int baseZ, EnumFacing dir) {
-		return (x == 2 * baseX + dir.getFrontOffsetX()) &&
-				(y == 2 * baseY + dir.getFrontOffsetY()) &&
-				(z == 2 * baseZ + dir.getFrontOffsetZ());
+		return (x == 2 * baseX + dir.getXOffset()) &&
+				(y == 2 * baseY + dir.getYOffset()) &&
+				(z == 2 * baseZ + dir.getZOffset());
 	}
 
 	public boolean isSameAs(BlockPos pos, EnumFacing dir) {

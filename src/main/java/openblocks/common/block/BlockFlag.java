@@ -139,7 +139,7 @@ public class BlockFlag extends OpenBlock.SixDirections {
 	}
 
 	@Override
-	public BlockRenderLayer getBlockLayer() {
+	public BlockRenderLayer getRenderLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 

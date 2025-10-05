@@ -222,7 +222,7 @@ public class ItemTankBlock extends ItemOpenBlock {
 	public String getItemStackDisplayName(ItemStack stack) {
 		final FluidTank fakeTank = readTank(stack);
 		final FluidStack fluidStack = fakeTank.getFluid();
-		final String unlocalizedName = getUnlocalizedName();
+		final String unlocalizedName = getTranslationKey();
 
 		if (fluidStack != null && fluidStack.amount > 0) {
 			final String fluidName = MiscUtils.getTranslatedFluidName(fluidStack);

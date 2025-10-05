@@ -181,7 +181,7 @@ public class StencilModelTransformer {
 		buffer.asIntBuffer().put(vertexData);
 		buffer.limit(vertexData.length * Ints.BYTES);
 
-		final int vertexSize = format.getNextOffset();
+		final int vertexSize = format.getSize();
 		for (int i = 0; i < 4; i++) {
 			buffer.position(vertexSize * i);
 			final float x = buffer.getFloat();
@@ -213,7 +213,7 @@ public class StencilModelTransformer {
 
 	private static BakedQuad retextureQuad(BakedQuad original, ByteBuffer contents, EnumFacing side, TextureAtlasSprite texture, TextureOrientation orientation, Vector3f[] positions) {
 		final VertexFormat format = original.getFormat();
-		final int vertexSize = format.getNextOffset();
+		final int vertexSize = format.getSize();
 		final int firstTextureOffset = format.getUvOffsetById(0);
 		final StencilTextureProjection projection = new StencilTextureProjection(side);
 		for (int i = 0; i < 4; i++) {

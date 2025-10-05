@@ -44,7 +44,7 @@ public class ItemLuggage extends Item {
 		if (!world.isRemote) {
 			Vec3d vec3 = new Vec3d(player.posX, player.posY, player.posZ);
 			Vec3d vec31 = player.getLook(1.0f);
-			Vec3d vec32 = vec3.addVector(vec31.x * 2.0f, vec31.y * 2.0f, vec31.z * 2.0f);
+			Vec3d vec32 = vec3.add(vec31.x * 2.0f, vec31.y * 2.0f, vec31.z * 2.0f);
 			EntityLuggage luggage = new EntityLuggage(world);
 			luggage.setPositionAndRotation(0.5 + vec32.x, vec3.y, 0.5 + vec32.z, 0, 0);
 			luggage.setOwnerId(player.getGameProfile().getId());

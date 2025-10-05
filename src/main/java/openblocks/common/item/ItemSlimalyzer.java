@@ -35,7 +35,7 @@ public class ItemSlimalyzer extends Item {
 	private static boolean isInSlimeChunk(World world, Entity entity) {
 		if (world == null || entity == null) return false;
 
-		final Chunk chunk = world.getChunkFromBlockCoords(entity.getPosition());
+		final Chunk chunk = world.getChunk(entity.getPosition());
 		return chunk.getRandomWithSeed(987234911L).nextInt(10) == 0;
 	}
 

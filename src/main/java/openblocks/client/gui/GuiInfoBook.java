@@ -158,7 +158,7 @@ public class GuiInfoBook extends ComponentGui {
 		}
 
 		try {
-			return Minecraft.getMinecraft().mcDataDir;
+			return Minecraft.getMinecraft().gameDir;
 		} catch (Throwable t) {
 			Log.warn(t, "Failed to get save folder from MC data dir");
 		}

@@ -68,10 +68,10 @@ public class BlockVacuumHopper extends OpenBlock {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		TileEntityVacuumHopper te = getTileEntity(world, pos, TileEntityVacuumHopper.class);
 		if (te != null) {
-			te.onEntityCollidedWithBlock(entity);
+			te.onEntityCollision(entity);
 		}
 	}
 

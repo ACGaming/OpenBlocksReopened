@@ -116,7 +116,7 @@ public class TileEntityTank extends SyncedTileEntity implements IActivateAwareTi
 	protected TileEntityTank getNeighourTank(BlockPos pos) {
 		if (!world.isBlockLoaded(pos)) return null;
 
-		Chunk chunk = world.getChunkFromBlockCoords(pos);
+		Chunk chunk = world.getChunk(pos);
 		TileEntity te = chunk.getTileEntity(pos, EnumCreateEntityType.CHECK);
 		return (te instanceof TileEntityTank)? (TileEntityTank)te : null;
 	}

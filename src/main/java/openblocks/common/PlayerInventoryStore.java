@@ -190,7 +190,7 @@ public class PlayerInventoryStore {
 		for (int i = 0; i < subTag.tagCount(); i++) {
 			NBTTagCompound itemTag = subTag.getCompoundTagAt(i);
 
-			if (!itemTag.hasNoTags()) {
+			if (!itemTag.isEmpty()) {
 				int slot = itemTag.getInteger(TAG_SLOT);
 				final ItemStack stack = new ItemStack(itemTag);
 				if (!stack.isEmpty()) result.addItemStack(slot, stack);

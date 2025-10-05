@@ -190,7 +190,7 @@ public class TileEntityVacuumHopper extends SyncedTileEntity implements IInvento
 
 			double distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
 			if (distance < 1.1) {
-				needsSync |= onEntityCollidedWithBlock(entity);
+				needsSync |= onEntityCollision(entity);
 			} else {
 				double var11 = 1.0 - distance / 15.0;
 
@@ -262,7 +262,7 @@ public class TileEntityVacuumHopper extends SyncedTileEntity implements IInvento
 		return false;
 	}
 
-	public boolean onEntityCollidedWithBlock(Entity entity) {
+	public boolean onEntityCollision(Entity entity) {
 		if (!world.isRemote) {
 			if (entity instanceof EntityItem && !entity.isDead) {
 				final EntityItem item = (EntityItem)entity;

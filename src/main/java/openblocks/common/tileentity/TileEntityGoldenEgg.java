@@ -270,7 +270,7 @@ public class TileEntityGoldenEgg extends SyncedTileEntity implements IPlaceAware
 		if (nbt.hasKey("owner", Constants.NBT.TAG_STRING)) {
 			String ownerName = nbt.getString("owner");
 
-			this.owner = TileEntitySkull.updateGameprofile(new GameProfile(null, ownerName));
+			this.owner = TileEntitySkull.updateGameProfile(new GameProfile(null, ownerName));
 		} else if (nbt.hasKey("OwnerUUID", Constants.NBT.TAG_STRING)) {
 			final String uuidStr = nbt.getString("OwnerUUID");
 			try {

@@ -123,7 +123,7 @@ public class StencilTextureManager {
 
 			freeLocations.clear();
 			for (int i = 0; i < size; i++) {
-				final ResourceLocation newLocation = new ResourceLocation(background.getResourceDomain(), background.getResourcePath() + "-" + i);
+				final ResourceLocation newLocation = new ResourceLocation(background.getNamespace(), background.getPath() + "-" + i);
 				final PoolTexture pooledSprite = new PoolTexture(newLocation, mipmapLevels);
 				freeLocations.push(pooledSprite);
 				textureMap.setTextureEntry(pooledSprite);

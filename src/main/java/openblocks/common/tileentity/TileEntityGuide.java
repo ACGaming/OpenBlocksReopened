@@ -536,7 +536,7 @@ public class TileEntityGuide extends DroppableTileEntity implements ISyncListene
 
 	private void updateRedstone() {
 		if (Config.guideRedstone != 0) {
-			boolean redstoneState = world.isBlockIndirectlyGettingPowered(pos) > 0;
+			boolean redstoneState = world.getRedstonePowerFromNeighbors(pos) > 0;
 			active.set(redstoneState);
 			sync();
 		}

@@ -170,9 +170,9 @@ public class SoundIconRegistry {
 
 	private IDrawableIcon findIcon(ResourceLocation sound) {
 		try {
-			MappedCategory domainRoot = roots.get(sound.getResourceDomain());
+			MappedCategory domainRoot = roots.get(sound.getNamespace());
 
-			Iterable<String> path = Splitter.on('.').split(sound.getResourcePath());
+			Iterable<String> path = Splitter.on('.').split(sound.getPath());
 			if (domainRoot != null) {
 				IDrawableIcon result = domainRoot.getIcon(path.iterator());
 				if (result != null) return result;

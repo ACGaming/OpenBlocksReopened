@@ -77,7 +77,7 @@ public class BlockVillageHighlighter extends OpenBlock.FourDirections {
 	private static void updateRedstone(World world, BlockPos blockPos, IBlockState state) {
 		if (!(world instanceof WorldServer)) return;
 
-		boolean isPowered = world.isBlockIndirectlyGettingPowered(blockPos) > 0;
+		boolean isPowered = world.getRedstonePowerFromNeighbors(blockPos) > 0;
 
 		final IBlockState newState = state.withProperty(POWERED, isPowered);
 		if (state != newState)

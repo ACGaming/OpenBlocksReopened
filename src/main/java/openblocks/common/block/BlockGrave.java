@@ -110,8 +110,8 @@ public class BlockGrave extends OpenBlock.FourDirections {
 	}
 
 	@Override
-	public void onBlockDestroyedByExplosion(World world, BlockPos pos, Explosion explosionIn) {
-		super.onBlockDestroyedByExplosion(world, pos, explosionIn);
+	public void onExplosionDestroy(World world, BlockPos pos, Explosion explosionIn) {
+		super.onExplosionDestroy(world, pos, explosionIn);
 		Log.log(debugLevel(), "Grave @ (%s) dimension = %d destroyed by explosion", pos, world.provider.getDimension());
 	}
 

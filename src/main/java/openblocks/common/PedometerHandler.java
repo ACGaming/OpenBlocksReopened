@@ -67,17 +67,17 @@ public class PedometerHandler {
 			double ticksSinceLastUpdate = currentTime - prevTickTime;
 			prevTickTime = currentTime;
 
-			double distanceSinceLastTick = deltaSinceLastUpdate.lengthVector();
+			double distanceSinceLastTick = deltaSinceLastUpdate.length();
 			double currentSpeed = ticksSinceLastUpdate != 0? distanceSinceLastTick / ticksSinceLastUpdate : 0;
 			totalDistance += distanceSinceLastTick;
 
 			Vec3d deltaFromStart = currentPosition.subtract(startPos);
 			long ticksFromStart = currentTime - startTicks;
 
-			double distanceFromStart = deltaFromStart.lengthVector();
+			double distanceFromStart = deltaFromStart.length();
 
 			double distanceFromLastCheck = 0;
-			if (lastCheckPos != null) distanceFromLastCheck = currentPosition.subtract(lastCheckPos).lengthVector();
+			if (lastCheckPos != null) distanceFromLastCheck = currentPosition.subtract(lastCheckPos).length();
 
 			long timeFromLastCheck = currentTime - lastCheckTime;
 

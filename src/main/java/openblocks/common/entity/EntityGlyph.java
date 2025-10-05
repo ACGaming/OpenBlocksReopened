@@ -71,8 +71,8 @@ public class EntityGlyph extends EntityHanging implements IEntityAdditionalSpawn
 			double centerZ = this.hangingPosition.getZ() + (8.0 / 16.0);
 
 			// move towards wall
-			centerX -= normal.getFrontOffsetX() * (16 - DEPTH) / 16 / 2;
-			centerZ -= normal.getFrontOffsetZ() * (16 - DEPTH) / 16 / 2;
+			centerX -= normal.getXOffset() * (16 - DEPTH) / 16 / 2;
+			centerZ -= normal.getZOffset() * (16 - DEPTH) / 16 / 2;
 
 			final EnumFacing left = normal.rotateY();
 			centerY += (offsetY - 8) / 16.0;

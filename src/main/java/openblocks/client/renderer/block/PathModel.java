@@ -156,7 +156,7 @@ public class PathModel implements IModel {
 								currentQuad.put(i, 1.0f, 1.0f, 1.0f, 1.0f);
 								break;
 							case NORMAL:
-								currentQuad.put(i, side.getFrontOffsetX(), side.getFrontOffsetY(), side.getFrontOffsetZ());
+								currentQuad.put(i, side.getXOffset(), side.getYOffset(), side.getZOffset());
 								break;
 							case UV:
 								if (e.getIndex() == 0) {
