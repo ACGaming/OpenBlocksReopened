@@ -102,7 +102,7 @@ public class ClientProxy implements IOpenBlocksProxy {
 
 	@Override
 	public void preInit() {
-		OBJLoader.INSTANCE.addDomain(OpenBlocks.MODID);
+		OBJLoader.INSTANCE.addDomain(OpenBlocks.MOD_ID);
 
 		MinecraftForge.EVENT_BUS.register(new FluidTextureRegisterListener(OpenBlocks.Fluids.xpJuice));
 
@@ -126,7 +126,7 @@ public class ClientProxy implements IOpenBlocksProxy {
 				.put("magic-stencil", ModelStencil.INSTANCE)
 				.put("magic-canvas", ModelCanvas.INSTANCE)
 				.put("magic-glyph", ModelGlyph.INSTANCE)
-				.build(OpenBlocks.MODID));
+				.build(OpenBlocks.MOD_ID));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityHangGlider.class, EntityHangGliderRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityLuggage.class, EntityLuggageRenderer::new);

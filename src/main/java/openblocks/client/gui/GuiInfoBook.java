@@ -91,7 +91,7 @@ public class GuiInfoBook extends ComponentGui {
 			addSectionPage(book, contentsPage, "openblocks.gui.blocks");
 
 			PageBuilder builder = new PageBuilder();
-			builder.includeModId(OpenBlocks.MODID);
+			builder.includeModId(OpenBlocks.MOD_ID);
 			builder.createBlockPages();
 			builder.insertTocPages(book, 4, 4, 1.5f);
 			alignToEven(book);
@@ -102,7 +102,7 @@ public class GuiInfoBook extends ComponentGui {
 			addSectionPage(book, contentsPage, "openblocks.gui.items");
 
 			PageBuilder builder = new PageBuilder();
-			builder.includeModId(OpenBlocks.MODID);
+			builder.includeModId(OpenBlocks.MOD_ID);
 			builder.createItemPages();
 			builder.insertTocPages(book, 4, 4, 1.5f);
 			alignToEven(book);

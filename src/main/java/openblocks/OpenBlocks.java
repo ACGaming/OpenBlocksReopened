@@ -2,6 +2,8 @@ package openblocks;
 
 import com.google.common.collect.Lists;
 import java.util.List;
+
+import info.openmods.openblocks.Tags;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -238,12 +240,12 @@ import openmods.sync.SyncableObjectType;
 import openmods.sync.SyncableObjectTypeRegistry;
 import openmods.utils.EnchantmentUtils;
 
-@Mod(modid = OpenBlocks.MODID, name = OpenBlocks.NAME, version = OpenBlocks.VERSION, dependencies = OpenBlocks.DEPENDENCIES, guiFactory = OpenBlocks.GUI_FACTORY, certificateFingerprint = OpenMods.CERTIFICATE_FINGERPRINT)
+@Mod(modid = OpenBlocks.MOD_ID, name = OpenBlocks.NAME, version = OpenBlocks.VERSION, dependencies = OpenBlocks.DEPENDENCIES, guiFactory = OpenBlocks.GUI_FACTORY, certificateFingerprint = OpenMods.CERTIFICATE_FINGERPRINT)
 public class OpenBlocks {
 
-	public static final String MODID = "openblocks";
-	public static final String NAME = "OpenBlocks Reopened";
-	public static final String VERSION = "$VERSION$";
+	public static final String MOD_ID = Tags.MOD_ID;
+	public static final String NAME = Tags.NAME;
+	public static final String VERSION = Tags.VERSION;
 	public static final String PROXY_SERVER = "openblocks.common.ServerProxy";
 	public static final String PROXY_CLIENT = "openblocks.client.ClientProxy";
 	public static final String DEPENDENCIES = "required-after:openmods";
@@ -261,7 +263,7 @@ public class OpenBlocks {
 	private static final int ENTITY_MINIME_ID = 710;
 	private static final int ENTITY_GLYPH_ID = 711;
 
-	@Instance(MODID)
+	@Instance(MOD_ID)
 	public static OpenBlocks instance;
 
 	@SidedProxy(clientSide = OpenBlocks.PROXY_CLIENT, serverSide = OpenBlocks.PROXY_SERVER)
@@ -506,7 +508,7 @@ public class OpenBlocks {
 				.setFillSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP);
 	}
 
-	@ObjectHolder(MODID)
+	@ObjectHolder(MOD_ID)
 	@EventBusSubscriber
 	public static class Sounds {
 		// TODO subtitles where sensible
@@ -604,7 +606,7 @@ public class OpenBlocks {
 		}
 	}
 
-	@ObjectHolder(MODID)
+	@ObjectHolder(MOD_ID)
 	public static class Enchantments {
 		@ObjectHolder("explosive")
 		public static final Enchantment explosive = null;
@@ -646,7 +648,7 @@ public class OpenBlocks {
 
 		@Override
 		protected void populateConfig(Configuration config) {
-			ConfigProcessing.processAnnotations(MODID, config, Config.class);
+			ConfigProcessing.processAnnotations(MOD_ID, config, Config.class);
 		}
 
 		@Override

@@ -12,7 +12,7 @@ public class ModGuiFactory implements IModGuiFactory {
 
 	public static class ConfigScreen extends OpenModsConfigScreen {
 		public ConfigScreen(GuiScreen parent) {
-			super(parent, OpenBlocks.MODID, OpenBlocks.NAME);
+			super(parent, OpenBlocks.MOD_ID, OpenBlocks.NAME);
 		}
 	}
 
