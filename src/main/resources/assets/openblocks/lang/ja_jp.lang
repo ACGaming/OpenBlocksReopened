@@ -1,0 +1,400 @@
+achievement.openblocks.droppedBrick=おおっと！
+achievement.openblocks.droppedBrick.desc=申し訳ありません、ただ起こってしまいました…
+stat.openblocks.bricksDropped=落としたレンガ
+achievement.openblocks.stackOverflow=スタックオーバーフロー
+achievement.openblocks.stackOverflow.desc=星がいっぱい！
+
+openblocks.keybind.category=OpenBlocks
+openblocks.keybind.drop_brick=おかしなことをする
+openblocks.keybind.vario_switch=Vario オン/オフ
+openblocks.keybind.vario_vol_up=Vario 音量アップ
+openblocks.keybind.vario_vol_down=Vario 音量ダウン
+
+enchantment.openblocks.explosive=不安定
+enchantment.openblocks.laststand=ラストスタンド
+enchantment.openblocks.flimflam=フリムフラム
+
+openblocks.gui.blocks=ブロック
+openblocks.gui.items=アイテム
+openblocks.gui.misc=雑多なもの
+openblocks.gui.changelogs=変更履歴
+
+openblocks.gui.features=機能
+openblocks.gui.bugfixes=バグ修正
+openblocks.gui.tweaks=微調整
+
+openblocks.gui.luggage=荷物
+openblocks.gui.sprinkler=スプリンクラー
+openblocks.gui.vacuumhopper=真空ホッパー
+openblocks.gui.bigbutton=大きなボタン
+openblocks.gui.xpbottler=XP ボトラー
+openblocks.gui.autoanvil=オートアンビル
+openblocks.gui.autoeject=オートイジェクト
+openblocks.gui.autoextract=オートエクストラクト
+openblocks.gui.autodrink=オートドリンク
+openblocks.gui.autoenchantmenttable=オートエンチャントテーブル
+openblocks.gui.donationstation=寄付ステーション
+openblocks.gui.itemdropper=アイテムドロッパー
+openblocks.gui.blockplacer=ブロックプレーサー
+openblocks.gui.paintmixer=ペイントミキサー
+openblocks.gui.drawingtable=ドローイングテーブル
+openblocks.gui.digitalfuse=デジタルヒューズ
+openblocks.gui.xp_outputs=XP 出力
+openblocks.gui.item_outputs=アイテム出力
+openblocks.gui.limit=制限
+openblocks.gui.available_power=利用可能なパワー：%d
+openblocks.gui.save_folder=セーブフォルダ
+
+openblocks.gui.drawingtable.stencils=ステンシル
+openblocks.gui.drawingtable.glyphs=グリフ
+openblocks.gui.drawingtable.print=印刷
+
+openblocks.gui.welcome.title=ようこそ！
+openblocks.gui.welcome.content=OpenBlocks はハンググライダー、エレベーター、タンク、墓、ペイント、クレーン、液体 XP、カートグラファー、トロフィーなど、様々なアイデアを Minecraft に導入する新しいオープンソースのモッドです！
+
+openblocks.gui.credits.title=クレジット
+openblocks.gui.credits.content=§LBoq、Mikee、NeverCast§R - OpenBlocks の主要開発者（自分たちをクレジットすることができますか？）\n\n§LSinZ、Yoshi2§R - OpenMods チームの最初のメンバー。\n\n§LVexatos、crafteverywhere§R - 定期的にモッドを翻訳しています。\n\nリリース前にバグやクラッシュを我慢してくれた ForgeCraft の Direwolf20 とその他のすべての人々。\n\nスポットライトを行い、レッツプレイを行い、モッドを開始してからサポートしてくれたすべての人々！
+
+openblocks.gui.config.title=簡単な設定編集
+openblocks.gui.config.content=OpenMods はクライアントとサーバーの設定オプションをチャットコマンドから変更できます。いくつかは再起動する必要もありません！\n\nサーバー設定は '§L/om_config_s§R'（op 必要）を使用して変更でき、クライアント設定は '§L/om_config_c§R' を使用して変更できます。\n\n例：\n\n§L/om_config_s set OpenBlocks dropblock elevatorDrainsXP false§R\n§L/om_config_s save§R\n\nコマンドのフルリストを取得するには、§L/help om_config_s§R または §L/help om_config_c§R を入力してください。
+
+openblocks.gui.restore_inv.title=インベントリのバックアップ
+openblocks.gui.restore_inv.content=誰でも間違えることがあります。しかし、§L/ob_inventory§R コマンドを使用すると、いくつかのものを修正できます。このコマンドはインベントリを復元するために使用できます。バックアップは次のときに作成されます。\n - プレイヤーが死ぬ\n - 墓が生成される\n - プレイヤーがコマンド §L/ob_inventory store§R を実行する\n\nインベントリを復元するには、バックアップ名が必要です。以下のフォルダまたはサーバーのセーブフォルダに移動して、§Linventory-*.dat§R という名前のファイルを探します。次に §L/ob_inventory restore <player> <id>§R を使用してインベントリを復元します - ここで id は、§Linventory-§R と §L.dat§R を除いた中間部分、または完全なファイル名のいずれかです。タブ補完も使用できます。バックアップは通常の NBT ファイルであり、どのエディターでも開くことができます。
+
+openblocks.gui.bkey.title=有名な 'B' キー
+openblocks.gui.bkey.content='B' キーは OpenBlocks で非常に特別なキーです。\n\nクライアントとサーバーの設定ファイルの 'tomfoolery' カテゴリー内の 'weAreSeriousPeople' 設定オプションを有効にすると、あなた自身の消化管を手に入れることができます。\n\nおいしい粘土を食べて 'B' キーを押して消化してみてください！
+
+openblocks.gui.unstable.title=不安定なエンチャント
+openblocks.gui.unstable.content=攻撃されたり、何かからジャンプしたときに、携帯している火薬が不安定になるという報告があります。\n\n自己責任でお使いください！
+
+openblocks.gui.flimflam.title=フリムフラムのエンチャント
+openblocks.gui.flimflam.content=科学者たちは、この魔法の特性をまだ発見していません。
+
+openblocks.gui.laststand.title=ラストスタンドのエンチャント
+openblocks.gui.laststand.content=ラストスタンドの魔法は、死に至るまでの最終防衛として、XPバーを使用します。\n\n0.5ハートに達したとき、ゲームはあなたがダメージを受けたときに、あなたからXPを取る代わりにあなたを殺すことはありません。エンチャントの数が高いほど、XPのコストは安くなります。
+
+openblocks.changelog.title=OpenBlocks %sでの新着情報
+openblocks.misc.url=URL：%s
+openblocks.misc.type=タイプ：%s
+openblocks.misc.uses=使用：%.2f
+openblocks.misc.color=色：%06X
+openblocks.misc.mode=配置モード：%s
+openblocks.misc.mode.block=ブロック
+openblocks.misc.mode.panel=パネル
+openblocks.misc.mode.half_panel=半分の高さのパネル
+openblocks.misc.mode.stairs=階段
+openblocks.misc.mode.inverted_block=反転ブロック
+openblocks.misc.mode.inverted_panel=反転パネル
+openblocks.misc.mode.inverted_half_panel=反転半分の高さのパネル
+openblocks.misc.mode.inverted_stairs=反転階段
+openblocks.misc.structure_pos=デバッグ：%sが（%d、%d、%d）で見つかりました
+openblocks.misc.locked=ロックされています
+openblocks.misc.selected_cannon=ターゲットを選択した大砲
+openblocks.misc.pointed_cannon=%s、%s、%sに大砲を向けました
+openblocks.misc.change_mode=%sモードに変更します
+openblocks.misc.change_size=サイズを%sx%sx%sに変更します
+openblocks.misc.change_box_size=(%d、%d、%d):(%d、%d、%d)にサイズを変更します
+openblocks.misc.total_blocks=合計ブロック数：%d
+openblocks.misc.get_witched=Get witched！
+openblocks.misc.page=%dページ/%d
+openblocks.misc.oh_no_ceiling=ここでは眠れません。天井があなたを邪魔しています…
+openblocks.misc.oh_no_ground=それを寝るつもり？！
+openblocks.misc.sleeping_bag_broken=初期化に失敗したため、アイテムは無効です
+openblocks.misc.inverted=反転
+openblocks.misc.structure_not_locked=任意の構造物にロックされていません！
+openblocks.misc.locked_on_nearest_structure=最も近い%sにロックされています
+openblocks.misc.locked_on_structure=%sにロックされています
+openblocks.misc.no_nearby_structures=近くの構造物が見つかりません
+
+openblocks.misc.grave_msg=%s (日: %.1f)
+
+openblocks.misc.cant_restore_player=プレイヤー %s のインベントリを復元できません
+openblocks.misc.cant_restore_inventory=インベントリを復元できません
+openblocks.misc.cant_store=プレイヤー %s のインベントリを保存できません
+openblocks.misc.invalid_sub_inventory=サブインベントリ %s を復元できません
+openblocks.misc.stored_inventory=プレイヤーインベントリを %s に保存しました
+openblocks.misc.restored_inventory=プレイヤー %s のインベントリを復元しました
+openblocks.misc.invalid_index=無効なインデックス
+openblocks.misc.empty_slot=スロットにアイテムがありません
+
+openblocks.misc.pedometer.tracking_reset=追跡がリセットされました
+openblocks.misc.pedometer.tracking_started=追跡が開始されました
+
+openblocks.misc.pedometer.start_point=開始点: %s
+openblocks.misc.pedometer.speed=速度: %s
+openblocks.misc.pedometer.avg_speed=平均速度: %s
+openblocks.misc.pedometer.total_distance=合計距離: %s
+
+openblocks.misc.pedometer.straght_line_distance=直線距離: %s
+openblocks.misc.pedometer.straigh_line_speed=直線速度: %s
+
+openblocks.misc.pedometer.last_check_distance=最後の確認からの距離: %s
+openblocks.misc.pedometer.last_check_speed=最後の確認の速度: %s
+openblocks.misc.pedometer.last_check_time=最後の確認からの時間: %d ティック
+
+openblocks.misc.pedometer.total_time=合計時間: %d ティック
+
+openblocks.misc.shape=形状: %s
+openblocks.misc.shape.sphere=球
+openblocks.misc.shape.cylinder=円柱
+openblocks.misc.shape.cuboid=立方体
+openblocks.misc.shape.full_cuboid=完全な立方体
+openblocks.misc.shape.dome=ドーム
+openblocks.misc.shape.triangle=三角形
+openblocks.misc.shape.pentagon=五角形
+openblocks.misc.shape.hexagon=六角形
+openblocks.misc.shape.octagon=八角形
+openblocks.misc.shape.axes=軸
+openblocks.misc.shape.planes=平面
+
+openblocks.misc.box=寸法: (%d,%d,%d):(%d,%d,%d)
+openblocks.misc.width=幅: %d
+openblocks.misc.height=高さ: %d
+openblocks.misc.depth=奥行き: %d
+
+openblocks.misc.radio.too_many=すでに多くのラジオが再生されています
+openblocks.misc.radio.invalid_stream=無効なストリーム
+openblocks.misc.radio.invalid_url=無効なURL
+openblocks.misc.radio.url_not_found=URLが見つかりません
+openblocks.misc.radio.unknown_stream_type=不明なストリームタイプ
+openblocks.misc.radio.malformed_data=ストリーム内の不正なデータ
+openblocks.misc.radio.not_ready=ストリームが準備できていません、後でもう一度お試しください
+openblocks.misc.radio.cant_connect=接続できません
+openblocks.misc.radio.unknown_error=不明なエラー
+openblocks.misc.radio.muted=音がミュートされています！
+
+openblocks.misc.side.east=東側
+openblocks.misc.side.west=西側
+openblocks.misc.side.north=北側
+openblocks.misc.side.south=南側
+openblocks.misc.side.up=上側
+openblocks.misc.side.down=下側
+
+openblocks.misc.command.invalid=無効なコマンド引数
+openblocks.misc.command.no_flim_flam=無効なフリムフラム名
+openblocks.misc.command.flim_flam_source=プレイヤー%sは%sでフリムフラムされました
+openblocks.misc.command.flim_flam_target=誰かがあなたを好きになっていません。力を持った人
+openblocks.misc.command.flim_flam_failed=フリムフラムに失敗しました！
+openblocks.misc.command.luck_added=プレイヤー%sのラックが変更されました、現在：%d
+openblocks.misc.command.luck_current=プレイヤー%sのラック：%d
+
+openblocks.misc.total_ticks=合計ティック：%d（%.2fs）
+
+openblocks.misc.hidden_lore=§a§oALTを押して履歴を表示してください§r
+openblocks.flim_flammed=あなたの周りで何か変なことが起こっています
+
+openblocks.misc.dropper.speed=スピード
+openblocks.misc.dropper.use_redstone=レッドストーン信号強度でスケール
+
+openblocks.turtle.magnet=磁石
+
+tile.openblocks.elevator.name=エレベーター
+tile.openblocks.elevator.description=1つのエレベーターをもう1つのエレベーターの3ブロック以上上に直接配置し、ジャンプして上に移動するか、しゃがんで下に移動できます。エレベーターはダイでクリックすることで染色できますが、同じ色のエレベーター間でのみテレポートできます。
+
+tile.openblocks.elevator_rotating.name=回転エレベーター
+
+tile.openblocks.heal.name=ヒーラー
+tile.openblocks.heal.description=ヒーリングブロックはクリエイティブモード専用のブロックで、時間をかけてわずかなヒーリング効果を与えます。
+
+tile.openblocks.guide.name=ビルディングガイド
+tile.openblocks.guide.description=ビルディングガイドは、レッドストーンで駆動すると、さまざまな形状とサイズのゴーストブロックのアウトラインを提供します。\nブロック上のタッチボタンを使用してアウトラインのサイズと形状を変更します。\nマーカーの色は中央ブロックに染料を使用して変更できます。
+
+tile.openblocks.builder_guide.name=強化ビルディングガイド
+tile.openblocks.builder_guide.description=この強化版のビルディングガイドは、ビルディングを容易にするゴーストブロックを表示するだけでなく、実際のブロックを配置することもできます。単に任意のブロックスタックで中央ブロックをクリックしてください！\nクリエイティブモードでは、上にオブシディアンブロックを配置してから、ビルディングガイドに任意のブロックを打ち込むと、自動的に形状が作成されます。
+
+tile.openblocks.ladder.name=倦怠の梯子
+tile.openblocks.ladder.description=倦怠の梯子は、梯子の上部のトラップドアから飛び出すのを防ぐのに役立ちます。倦怠の梯子は、トラップドアと梯子の両方の役割を兼ねています。
+
+tile.openblocks.tank.filled.name=%sタンク
+tile.openblocks.tank.name=タンク
+tile.openblocks.tank.description=タンクには液体を入れることができます。タンクを隣接させると、液体がタンク間で分配されます。バケツを使用してタンクに液体を入れることができます。タンクにXPジュースが入っている場合は、空の手でタンクをクリックすると、XPを得ることができます。破壊されたタンクは液体を保持します。
+
+tile.openblocks.flag.name=旗
+tile.openblocks.flag.description=旗は、飾り付けや洞窟に潜った後に戻る道を印するために使用できます。旗は、配置した方向を指しています。また、壁にも置くことができます。旗を手に持ってシフトクリックすると、色が変わります。
+
+tile.openblocks.beartrap.name=ベアトラップ
+tile.openblocks.beartrap.description=ベアトラップを配置してクリックすると、開きます。モブがトラップを踏むと、動けなくなります！
+
+tile.openblocks.sponge.name=スポンジ
+tile.openblocks.sponge.description=スポンジはバニラスポンジの代わりです。小さな溶岩や水のポケットを取り除くのに最適です。しかし、大規模な液体面で使用すると、かなり汚くなるので注意してください。
+
+item.openblocks.sponge_on_a_stick.name=スポンジ
+item.openblocks.sponge_on_a_stick.description=スポンジ・オン・ア・スティックは、液体を清掃するためのツールです。スポンジと同じように機能しますが、着用で消耗する代わりによりモビリティが高まります。
+
+item.openblocks.epic_eraser.name=エピック・イレーサー
+item.openblocks.epic_eraser.description=すべてのアイテムには独自の歴史があります...\n\nそれが嫌ですよね？\nこのアイテムでは、収集したエピックな伝説のすべての跡を洗い流し、黒市で販売する前に心配する必要がなくなります。
+
+tile.openblocks.cannon.name=アイテムキャノン
+tile.openblocks.cannon.description=レッドストーンの信号を与えると、アイテムキャノンは隣接するインベントリ内で見つかったアイテムを撃ち出します。「ポインター」アイテムを使用してキャノンを照準します。
+
+tile.openblocks.rope_ladder.name=ロープ・ラダー
+tile.openblocks.rope_ladder.description=ロープ・ラダーを配置すると、地面まですべて展開されます。作成されたラダーブロックごとにスタックから1つのアイテムが使用されます。
+
+tile.openblocks.sprinkler.name=スプリンクラー
+tile.openblocks.sprinkler.description=スプリンクラーは、OpenBlocksタンクに水を入れた上で、作物を4ブロック以内に肥料を施すのに役立ちます。また、水源ブロックとしても機能します！
+
+tile.openblocks.paint_mixer.name=ペイントミキサー
+tile.openblocks.paint_mixer.description=ペイントミキサーは、あなたが望む任意の色のペイントを混ぜることができます！既存のペイントバケツまたはミルクバケツを上のスロットにドロップし、残りの4つのスロットにシアン、マゼンタ、イエロー、ブラックの染料を入れて、ミックスをクリックします！
+
+tile.openblocks.canvas.name=キャンバス
+tile.openblocks.canvas.description=キャンバスは完璧な白いブロックで、ペイントするのに最適です。ペイントミキサーについては、ペイントを作る情報を参照してください。
+
+tile.openblocks.canvas_glass.name=キャンバス
+
+tile.openblocks.fan.name=ファン
+tile.openblocks.fan.description=ファンは、向いている方向にプレイヤー、モブ、またはエンティティを吹き飛ばします。
+
+tile.openblocks.target.name=ターゲット
+tile.openblocks.target.description=ターゲットは、プレイヤーの狙いの精度に応じて、レッドストーンの信号の強さを出力します。ターゲットにレッドストーンの信号を入力すると、それが弾け上がります！
+
+tile.openblocks.path.name=パス
+tile.openblocks.path.description=パスは何もしません。ただ見栄えがいいだけです！
+
+tile.openblocks.item_dropper.name=アイテムドロッパー
+tile.openblocks.item_dropper.description=アイテムドロッパーは、バニラのドロッパーと同様ですが、ランダムなバイアスなしでアイテムをドロップします。ユーザーは、GUIからドロップアイテムの速度を制御し、レッドストーンパワーでも制御できます。
+
+tile.openblocks.big_button.name=石の大きなボタン
+tile.openblocks.big_button.description=大きなボタンは壁に設置できます。空の手でボタンをシフトクリックすると、インベントリが表示されます。そこにアイテムを入れると、ボタンが押されている時間が延長されます - 1つのアイテムで1ティック延長されます。
+
+tile.openblocks.big_button_wood.name=木製の大きなボタン
+
+tile.openblocks.xp_drain.name=XPドレイン
+tile.openblocks.xp_drain.description=OpenBlocksのタンクの上にXPドレインを置いて、その上に立つと、あなたのXPがタンクに流れ込みます。それを使って、オートエンチャントテーブルやオートアンビルなどのブロックを作ることができます。
+
+tile.openblocks.vacuum_hopper.name=真空ホッパー
+tile.openblocks.vacuum_hopper.description=真空ホッパーは、周囲のアイテムやXPオーブを吸い取ります。インターフェースの右側のタブを使用して、どちらの側面から出力するかを選択できます。
+
+tile.openblocks.village_highlighter.name=村ハイライター
+tile.openblocks.village_highlighter.description=村の中にハイライターを落として、レッドストーンの信号を与えます。それは村の周囲を強調し、鉄のゴーレムの生成領域にボックスを描きます。村が互いに結合しないようにしたり、鉄の農場を作る場合に便利です！
+
+tile.openblocks.donation_station.name=寄付ステーション
+tile.openblocks.donation_station.description=ブロックやアイテムを気に入って、モッド開発者に感謝の気持ちを表したいですか？それを寄付ステーションに入れると、作者の寄付ページがわかっていれば、リンクを提供します。
+
+tile.openblocks.block_placer.name=ブロックプレーサー
+tile.openblocks.block_placer.description=レッドストーンパルスを与えると、ブロックプレーサーは、向いている方向にアイテムを配置します。
+
+tile.openblocks.block_breaker.name=ブロックブレーカー
+tile.openblocks.block_breaker.description=レッドストーンパルスを与えると、ブロックブレーカーは、向いているブロックを破壊します。
+
+tile.openblocks.projector.name=高さマッププロジェクター
+tile.openblocks.projector.description=boqに書かせましょう！
+tile.openblocks.projector.working.name=高さマッププロジェクター
+
+tile.openblocks.auto_enchantment_table.name=オートエンチャントテーブル
+tile.openblocks.auto_enchantment_table.description=オートエンチャントテーブルは、バニラのエンチャントテーブルと同様に動作しますが、XPジュースから動作します。インターフェースの右側のタブを使用して、どちらの側面からアイテムや液体を挿入または抽出するかを選択します。右クリックしてドラッグすると、アンビルを回転させて、他の側面を選択できます！
+
+tile.openblocks.xp_bottler.name=XPボトラー
+tile.openblocks.xp_bottler.description=XPボトラーは、XPジュースを取り込み、グラス瓶に入れて、エンチャンティングのボトルを作成します。
+
+tile.openblocks.auto_anvil.name=オートアンビル
+tile.openblocks.auto_anvil.description=オートアンビルは、バニラのアンビルと同様に動作しますが、XPジュースから動作し、完全に自動化できます。
+
+tile.openblocks.drawing_table.name=ドローイングテーブル
+tile.openblocks.drawing_table.description=ドローイングテーブルは、ペイント中に使用するステンシルを作成するために使用します。未準備のステンシルをドローイングテーブルに挿入してから、矢印を使用して、どのステンシルを使用するかを選択します！
+
+tile.openblocks.grave.name=墓
+tile.openblocks.trophy.name=トロフィー
+tile.openblocks.trophy.entity.name=%s トロフィー
+tile.openblocks.canvasglass.name=ガラスキャンバス
+tile.openblocks.paint_can.name=ペイント缶
+
+tile.openblocks.sky.normal.name=スカイブロック
+tile.openblocks.sky.normal.description=新しいスカイブロックで外を内に持ち込みましょう！レッドストーン信号を適用してください。反転バージョンも提供しています。
+tile.openblocks.sky.inverted.name=反転スカイブロック
+
+tile.openblocks.radio.name=ラジオ
+tile.openblocks.radio.description=ラジオでインターネットラジオをストリーミングできます！まず、ダンジョンチェストか特別な村人から見つけることができるチュームクリスタルが必要です。ラジオにクリスタルを配置し、レッドストーン信号を供給してオンにします。レッドストーンの強さで音量を制御します。\n\nサーバーの設定ファイルで利用可能なラジオ局を設定できます。
+
+tile.openblocks.xp_shower.name=XPシャワー
+tile.openblocks.xp_shower.description=XPジュースのタンクにXPシャワーを取り付けると、XPオーブが溢れ出します。これらのオーブはXPドレインまたはMFRスーザーで収集できます。
+
+tile.openblocks.scaffolding.name=足場
+tile.openblocks.scaffolding.description=あなたが終わったときに美しくないタワーを残さずにどこかに柱を築きたいと思ったことはありませんか？さあ、今ならできます！単に足場ブロックを築くだけで、終わったときに自動的に消滅します。
+
+tile.openblocks.golden_egg.name=ゴールデンエッグ
+
+tile.openblocks.digitalfuse.name=デジタルヒューズ
+
+item.openblocks.cursor.name=カーソル
+item.openblocks.cursor.description=カーソルを使えば、リモートからブロックをクリックできます。\nシフトを押しながらブロックをクリックすると、カーソルをリンクし、カーソルをどこにでも配置してターゲットブロックをクリックできます。デフォルトでは、カーソルはブロックからの距離に応じてXPを消費しますのでご注意ください。
+
+item.openblocks.dev_null.name=/dev/null
+item.openblocks.dev_null.description=/dev/nullを使ってインベントリを開きます。1つのインベントリスロットがあります - 例えば土を入れてください。地面から土を集めると、このスロットが満杯になります。満杯になったら、追加の土を拾うと自動的に破棄されます。手にアイテムを持っているようにブロックを配置することができます！
+
+item.openblocks.slimalyzer.name=スリマライザー
+item.openblocks.slimalyzer.description=スリマライザーを手に持って歩き回ると、スライムが発生するチャンクにいるときに発光します。
+
+item.openblocks.hang_glider.name=ハンググライダー
+item.openblocks.hang_glider.description=ハンググライダーは自明です。手に持っていてクリックして背中に配置します。そしてジャンプ！\nスピードを上げるには、グライディング中にシフトを押してくださいが、注意してください、高度が早くなります！\n\nハンググライダーには、垂直空気運動を示すアコースティックバリオメーターが付属しています。Vを押して有効にして、永遠に（または夕暮れまで）上にいましょう！
+
+item.openblocks.glider_wing.name=グライダーウィング
+
+item.openblocks.sleeping_bag.name=スリーピングバッグ
+item.openblocks.sleeping_bag.description=スリーピングバッグを使えば、スポーン地点をリセットすることなく野外で眠ることができます。寝るには、背中に着けてください。
+
+item.openblocks.luggage.name=ラゲッジ
+item.openblocks.luggage.description=ラゲッジはあなたの新しい友達です。あなたが行くどこにでもあなたを追いかけ、床にあるすべてのアイテムを収集します。ノムノムノム！\n彼を解体するには、彼にシフトを押してクリックして、持ち歩けるアイテムに変えることができます。\n彼が雷に打たれたら、もっと多くのアイテムを持つことができるようになります！
+
+item.openblocks.sonic_glasses.name=ソニックグラス
+item.openblocks.sonic_glasses.description=ファンタスティックな新しいソニックグラスの登場！\nOpenMods Incからのこの新しくエキサイティングなテクノロジーで、聞いたものを見ることができます！
+
+item.openblocks.squeegee.name=スクイージ
+item.openblocks.squeegee.description=スクイージは、塗られたブロックからペイントを取り除くことができます。ブロックの側面をクリックするか、代わりにシフトクリックして、すべての側面からペイントを取り除くことができます！
+
+item.openblocks.paintbrush.name=ペイントブラシ
+item.openblocks.paintbrush.description=ペイントブラシでは、お好みの色でブロックを塗ることができます！\n\nペイントミキサーで作成したペイント缶にペイントブラシを染み込ませて、ブロックをクリックして塗ることができます。\n\nキャンバスブロックは塗るのに最適ですが、いくつかのバニラブロックや他のモッドのブロックも塗ることができます。また、ステンシルをブロックに設置してからステンシルを塗ることもできます！
+
+item.openblocks.unprepared_stencil.name=未準備のステンシル
+item.openblocks.unprepared_stencil.description=ステンシルは、ブロックに設置してからペイントブラシで塗ることができます！\n\n複数のステンシルを使用してブロックを塗ることができ、空の手でクリックすると回転させることができます。\n\n描画テーブルに未準備のステンシルを設置して、さまざまなパターンを作成します。
+
+item.openblocks.crane_backpack.name=クレーンバックパック
+item.openblocks.crane_backpack.description=Minecraftの世界では、「マグネット」という言葉は「これはどうやって動くのか」という古い言葉です。\n\nこの特別な装備品は、モブ、プレイヤー、アイテム、ブロックを拾って持ち運ぶことができます。マグネットコントロールで制御できます。
+
+item.openblocks.crane_control.name=クレーンコントロール
+item.openblocks.crane_control.description=このハイテクワイヤレスリモートは、マグネットバックパックを制御するために使用されます。\n\n右クリックで上げ、スニーク＋右クリックで下げ、左クリックで拾い/解放。\n点滅するライトは、マグネットの下に何かがあることを示します。
+
+item.openblocks.wrench.name=大きな金属棒
+item.openblocks.wrench.description=これは、八面体対称性を持つオブジェクトを変換するために使用される極めて高度なツールです。\n\n\nまたは、立方体などを回転させるために使用できる大きな、愚かな金属のピースです。\n\nつまり、これはまた別のレンチです。ここでオリジナルになろうとしているだけです、OK？
+
+item.openblocks.glyph.name=グリフ
+item.openblocks.glyph.with_char='%c' グリフ
+
+item.openblocks.stencil.name=ステンシル
+item.openblocks.crayon.name=魔法のクレヨン
+item.openblocks.pencil.name=魔法の鉛筆
+item.openblocks.glasses.pencil.name=鉛筆メガネ
+item.openblocks.glasses.crayon.name=クレヨンメガネ
+item.openblocks.glasses.technicolor.name=驚異のテクニカラーメガネ
+item.openblocks.glasses.admin.name=バッドアスメガネ
+item.openblocks.crane_engine.name=クレーンエンジン
+item.openblocks.crane_magnet.name=クレーンマグネット
+item.openblocks.beam.name=ビーム
+item.openblocks.line.name=ライン
+item.openblocks.miracle_magnet.name=§5奇跡のマグネット§r
+item.openblocks.info_book.name=OpenBlocksで世界征服
+item.openblocks.xp_bucket.name=XPバケツ
+item.openblocks.height_map.name=高さマップ
+item.openblocks.empty_map.name=空のマップ
+item.openblocks.map_controller.name=マップコントローラーモジュール
+item.openblocks.map_memory.name=マップメモリモジュール
+item.openblocks.cartographer.name=カートグラファー
+item.openblocks.assistant_base.name=アシスタントの基地
+item.openblocks.sketching_pencil.name=スケッチペン
+item.openblocks.tasty_clay.name=おいしい粘土
+item.openblocks.golden_eye.name=黄金の目
+item.openblocks.pointer.name=ポインター
+item.openblocks.tuned_crystal.name=調整された結晶
+item.openblocks.pedometer.name=歩数計
+
+item.openblocks.wallpaper.name=壁紙
+
+itemGroup.tabOpenBlocks=OpenBlocks
+
+entity.openblocks.luggage.name=荷物
+entity.openblocks.cartographer.name=カートグラファー
+entity.openblocks.block.name=浮遊ブロック
+entity.openblocks.mini_me.name=ミニミー
+
+fluid.openblocks.xp_juice=液体XP
+
+entity.Villager.audiophile=オーディオファイル
