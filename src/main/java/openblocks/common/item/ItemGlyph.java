@@ -43,7 +43,7 @@ public class ItemGlyph extends Item {
 
 	public static final int DEFAULT_CHAR_INDEX = getCharIndex(DEFAULT_CHAR);
 
-	private static int getCharIndex(char ch) {
+	public static int getCharIndex(char ch) {
 		final int result = ArrayUtils.indexOf(ALMOST_ASCII, ch);
 		return result != ArrayUtils.INDEX_NOT_FOUND? result : DEFAULT_CHAR_INDEX;
 	}
@@ -52,7 +52,7 @@ public class ItemGlyph extends Item {
 		return ch != ' ' && (ch == 0 || Character.isWhitespace(ch));
 	}
 
-	private static char getChar(int index) {
+	public static char getChar(int index) {
 		if (index >= 0 && index < ALMOST_ASCII.length) {
 			return ALMOST_ASCII[index];
 		} else {
