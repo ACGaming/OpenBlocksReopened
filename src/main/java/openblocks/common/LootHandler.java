@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import openblocks.Config;
 import openblocks.OpenBlocks;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = OpenBlocks.MOD_ID)
 public class LootHandler {
 
 	private static ResourceLocation mc(String location) {

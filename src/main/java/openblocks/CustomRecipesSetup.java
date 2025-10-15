@@ -14,7 +14,7 @@ import openblocks.common.recipe.GoldenEyeRechargeRecipe;
 import openblocks.common.recipe.MapCloneRecipe;
 import openblocks.common.recipe.MapResizeRecipe;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = OpenBlocks.MOD_ID)
 public class CustomRecipesSetup {
 
 	@SubscribeEvent

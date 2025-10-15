@@ -1,8 +1,8 @@
 package openblocks.enchantments;
 
-import info.openmods.calc.ExprType;
-import info.openmods.calc.SingleExprEvaluator;
-import info.openmods.calc.types.fp.DoubleCalculatorFactory;
+import openmods.calc.ExprType;
+import openmods.calc.SingleExprEvaluator;
+import openmods.calc.types.fp.DoubleCalculatorFactory;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;

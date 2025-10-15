@@ -125,8 +125,8 @@ dependencies {
             transitive = false
         }
     }
-    implementation rfg.deobf("curse.maven:openmodslib-228815:2699055")
-    compileOnly group: 'info.openmods', name: 'calc', version: '0.2'
+    //implementation rfg.deobf("curse.maven:openmodslib-228815:2699055")
+    //compileOnly group: 'info.openmods', name: 'calc', version: '0.2'
     compileOnly "info.computercraft:ComputerCraft-API:1.80pr0"
     compileOnly "info.openmods:OpenPeripheralCore-API:3.5-unstable"
 }

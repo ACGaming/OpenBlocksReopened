@@ -22,7 +22,7 @@ import openblocks.common.item.ItemPaintBrush;
 import openblocks.common.item.ItemPaintCan;
 import openblocks.common.item.ItemTankBlock;
 
-@EventBusSubscriber(Side.CLIENT)
+@EventBusSubscriber(value = Side.CLIENT, modid = OpenBlocks.MOD_ID)
 public class BlockColorHandlerRegistration {
 
 	@SubscribeEvent

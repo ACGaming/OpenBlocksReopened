@@ -2,9 +2,9 @@ package openblocks.common;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import info.openmods.calc.ExprType;
-import info.openmods.calc.SingleExprEvaluator;
-import info.openmods.calc.types.fp.DoubleCalculatorFactory;
+import openmods.calc.ExprType;
+import openmods.calc.SingleExprEvaluator;
+import openmods.calc.types.fp.DoubleCalculatorFactory;
 import java.util.Map;
 import java.util.Random;
 import net.minecraft.entity.Entity;

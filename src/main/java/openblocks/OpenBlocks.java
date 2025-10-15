@@ -240,7 +240,7 @@ import openmods.sync.SyncableObjectType;
 import openmods.sync.SyncableObjectTypeRegistry;
 import openmods.utils.EnchantmentUtils;
 
-@Mod(modid = OpenBlocks.MOD_ID, name = OpenBlocks.NAME, version = OpenBlocks.VERSION, dependencies = OpenBlocks.DEPENDENCIES, guiFactory = OpenBlocks.GUI_FACTORY, certificateFingerprint = OpenMods.CERTIFICATE_FINGERPRINT)
+@Mod(modid = OpenBlocks.MOD_ID, name = OpenBlocks.NAME, version = OpenBlocks.VERSION, guiFactory = OpenBlocks.GUI_FACTORY)
 public class OpenBlocks {
 
 	public static final String MOD_ID = Tags.MOD_ID;
@@ -248,7 +248,6 @@ public class OpenBlocks {
 	public static final String VERSION = Tags.VERSION;
 	public static final String PROXY_SERVER = "openblocks.common.ServerProxy";
 	public static final String PROXY_CLIENT = "openblocks.client.ClientProxy";
-	public static final String DEPENDENCIES = "required-after:openmods";
 	public static final String GUI_FACTORY = "openblocks.client.ModGuiFactory";
 
 	private static final int ENTITY_HANGGLIDER_ID = 701;
