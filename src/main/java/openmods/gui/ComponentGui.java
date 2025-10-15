@@ -130,7 +130,7 @@ public abstract class ComponentGui extends GuiContainer {
 	@Override
 	protected void keyTyped(char typedChar, int keyCode) {
 		// no super call!
-		if (keyCode == Keyboard.KEY_ESCAPE) {
+		if (keyCode == Keyboard.KEY_ESCAPE || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode)) {
 			this.mc.player.closeScreen();
 		} else {
 			root.keyTyped(typedChar, keyCode);
