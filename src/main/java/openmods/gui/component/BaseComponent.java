@@ -102,6 +102,10 @@ public abstract class BaseComponent extends Gui {
 
 	public void renderOverlay(int offsetX, int offsetY, int mouseX, int mouseY) {}
 
+	public boolean isKeyboardListening() {
+		return keyListener != null;
+	}
+
 	public void keyTyped(char keyChar, int keyCode) {
 		if (keyListener != null) keyListener.componentKeyTyped(this, keyChar, keyCode);
 	}
