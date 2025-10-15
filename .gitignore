@@ -1,5 +1,5 @@
 # OpenMods Java Project .gitignore file
-# Last Authored: 20150816
+# Last Authored: 20251015
 
 # Runtime output
 *.class
@@ -34,12 +34,3 @@ bin/
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# Misc
-download/
-config/
-saves/
-crash-reports/
-screenshots/
-usernamecache.json
-options.txt
