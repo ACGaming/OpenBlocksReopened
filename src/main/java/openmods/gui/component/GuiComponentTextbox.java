@@ -43,6 +43,11 @@ public class GuiComponentTextbox extends BaseComponent implements IValueReceiver
 	}
 
 	@Override
+	public boolean isKeyboardListening() {
+		return textfield.isFocused();
+	}
+
+	@Override
 	public void keyTyped(char par1, int par2) {
 		if (textfield.textboxKeyTyped(par1, par2)) notifyListeners();
 	}

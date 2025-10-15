@@ -95,6 +95,18 @@ public abstract class BaseComposite extends BaseComponent {
 	}
 
 	@Override
+	public boolean isKeyboardListening() {
+		if (super.isKeyboardListening()) return true;
+		if (!areChildrenActive()) return false;
+
+		for (BaseComponent component : components)
+			if (isComponentEnabled(component) && component.isKeyboardListening()) {
+				return true;
+			}
+		return false;
+	}
+
+	@Override
 	public void keyTyped(char keyChar, int keyCode) {
 		super.keyTyped(keyChar, keyCode);
 
