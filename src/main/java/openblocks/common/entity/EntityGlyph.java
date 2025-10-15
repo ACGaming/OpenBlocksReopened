@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import openblocks.OpenBlocks.Items;
 import openblocks.OpenBlocks.Sounds;
 import openblocks.common.item.ItemGlyph;
+import openmods.utils.TranslationUtils;
 
 public class EntityGlyph extends EntityHanging implements IEntityAdditionalSpawnData {
 
@@ -101,6 +102,18 @@ public class EntityGlyph extends EntityHanging implements IEntityAdditionalSpawn
 
 			setEntityBoundingBox(new AxisAlignedBB(centerX - halfSizeX, centerY - halfSizeY, centerZ - halfSizeZ, centerX + halfSizeX, centerY + halfSizeY, centerZ + halfSizeZ));
 		}
+	}
+
+	@Override
+	public String getName() {
+		if (charIndex == ItemGlyph.DEFAULT_CHAR_INDEX) {
+			if (this.hasCustomName()) {
+				return this.getCustomNameTag();
+			}
+			return TranslationUtils.translateToLocal("item.openblocks.glyph.name");
+		}
+		final char ch = ItemGlyph.getChar(charIndex);
+		return TranslationUtils.translateToLocalFormatted("item.openblocks.glyph.with_char", ch);
 	}
 
 	@Override
