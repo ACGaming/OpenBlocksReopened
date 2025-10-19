@@ -50,10 +50,10 @@ openblocks.gui.drawingtable.glyphs=Glyphen
 openblocks.gui.drawingtable.print=Druck
 
 openblocks.gui.welcome.title=Willkommen!
-openblocks.gui.welcome.content=OpenBlocks ist eine neue freie Mod, die verschiedene Ideen in Minecraft einbringt, inklusive Gleitschirme, Aufzüge, Tanks, Gräber, Farben, Kräne, flüssige Erfahrungspunkte, Kartographen, Trophäen und mehr!
+openblocks.gui.welcome.content=OpenBlocks ist eine quelloffene Mod, die verschiedene Ideen in Minecraft einbringt, inklusive Gleitschirme, Aufzüge, Tanks, Gräber, Farben, Kräne, flüssige Erfahrungspunkte, Kartographen, Trophäen und mehr! Außer den Schaltflächen kannst du auch mit Bild auf, Bild ab, Pos1 und Ende durch das Handbuch navigieren.
 
 openblocks.gui.credits.title=Danksagungen
-openblocks.gui.credits.content=§LBoq, Mikee und NeverCast§R - Führende Entwickler von OpenBlocks (Dürfen wir uns selbst hier nennen?)\n\n§LSinZ und Yoshi2§R - Von Anfang an Mitglieder des OpenMods-Teams.\n\n§LVexatos und crafteverywhere§R -Übersetzen regelmäßig die Modifikation.\n\nJeder, der innerhalb der letzten zwei Jahre zum Code beigetragen hat.\n\n§LDirewolf20 und der Rest von ForgeCraft§R - Für das Entdecken der Fehler und Abstürze vor der Veröffentlichung einer Version.\n\nJeder, der einen Einblick oder Let's Play machte sowie generell die Modifikation untertützt hat, seit wir begannen!
+openblocks.gui.credits.content=§LBoq, Mikee und NeverCast§R - Ehemalige führende Entwickler vom originalen OpenBlocks\n\n§LSinZ und Yoshi2§R - Von Anfang an Mitglieder des OpenMods-Teams.\n\n§LVexatos und crafteverywhere§R -Übersetzen regelmäßig die Modifikation.\n\nJeder, der innerhalb der letzten zwei Jahre zum Code beigetragen hat.\n\n§LDirewolf20 und der Rest von ForgeCraft§R - Für das Entdecken der Fehler und Abstürze vor der Veröffentlichung einer Version.\n\nJeder, der einen Einblick oder Let's Play machte sowie generell die Modifikation untertützt hat, seit wir begannen!
 
 openblocks.gui.config.title=Einfache Konfigurations-Bearbeitung
 openblocks.gui.config.content=OpenMods erlaubt, sowohl den Client- als auch den Serverkonfigurationen über den Chat zu ändern. Manche brauchen nicht mal einen Neustart!\n\nServerkonfigurationen können mit '§L/om_config_s§R' (setzt Operator-Rechte vorraus) und Clientkonfigurationen mit '§L/om_config_c§R' geändert werden.\n\nZum Beispiel:\n\n§L/om_config_s set OpenBlocks dropblock elevatorDrainsXP false§R\n§L/om_config_s save§R\n\nFür eine Liste aller verfügbaren Befehlen benutze: §L/help om_config_s§R oder §L/help om_config_c§R
