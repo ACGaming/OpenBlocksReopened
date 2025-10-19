@@ -18,9 +18,15 @@ public class GuiComponentBook extends BaseComposite {
 	public static final Icon iconNext = Icon.createSheetIcon(PageBase.BOOK_TEXTURE, 57, 213, 18, 10);
 	public static final Icon iconPrevHover = Icon.createSheetIcon(PageBase.BOOK_TEXTURE, 80, 226, 18, 10);
 	public static final Icon iconNextHover = Icon.createSheetIcon(PageBase.BOOK_TEXTURE, 80, 213, 18, 10);
+	public static final Icon iconFirst = Icon.createSheetIcon(PageBase.BOOK_TEXTURE, 103, 226, 18, 10);
+	public static final Icon iconFirstHover = Icon.createSheetIcon(PageBase.BOOK_TEXTURE, 126, 226, 18, 10);
+	public static final Icon iconLast = Icon.createSheetIcon(PageBase.BOOK_TEXTURE, 103, 213, 18, 10);
+	public static final Icon iconLastHover = Icon.createSheetIcon(PageBase.BOOK_TEXTURE, 126, 213, 18, 10);
 
 	private GuiComponentSpriteButton imgPrev;
 	private GuiComponentSpriteButton imgNext;
+	private GuiComponentSpriteButton imgFirst;
+	private GuiComponentSpriteButton imgLast;
 	private GuiComponentLabel pageNumberLeft;
 	private GuiComponentLabel pageNumberRight;
 
@@ -39,6 +45,10 @@ public class GuiComponentBook extends BaseComposite {
 		imgPrev.setListener((IMouseDownListener)(component, x, y, button) -> prevPage());
 		imgNext = new GuiComponentSpriteButton(380, 158, iconNext, iconNextHover);
 		imgNext.setListener((IMouseDownListener)(component, x, y, button) -> nextPage());
+		imgFirst = new GuiComponentSpriteButton(178, 158, iconFirst, iconFirstHover);
+		imgFirst.setListener((IMouseDownListener)(component, x, y, button) -> firstPage());
+		imgLast = new GuiComponentSpriteButton(226, 158, iconLast, iconLastHover);
+		imgLast.setListener((IMouseDownListener)(component, x, y, button) -> lastPage());
 
 		final float scalePageNumber = BookScaleConfig.getPageNumberScale();
 		pageNumberLeft = new GuiComponentLabel(85, 163, 100, 10, "XXX");
@@ -50,6 +60,8 @@ public class GuiComponentBook extends BaseComposite {
 		addComponent(imgRightBackground);
 		addComponent(imgPrev);
 		addComponent(imgNext);
+		addComponent(imgFirst);
+		addComponent(imgLast);
 		addComponent(pageNumberLeft);
 		addComponent(pageNumberRight);
 
@@ -98,8 +110,10 @@ public class GuiComponentBook extends BaseComposite {
 
 		int totalPageCount = i % 2 == 0? i : i + 1;
 
-		imgNext.setEnabled(index < pages.size() - 2);
 		imgPrev.setEnabled(index > 0);
+		imgNext.setEnabled(index < pages.size() - 2);
+		imgFirst.setEnabled(index > 0);
+		imgLast.setEnabled(index < pages.size() - 2);
 		pageNumberLeft.setText(TranslationUtils.translateToLocalFormatted("openmodslib.book.page", index + 1, totalPageCount));
 		pageNumberRight.setText(TranslationUtils.translateToLocalFormatted("openmodslib.book.page", index + 2, totalPageCount));
 	}
