@@ -1,5 +1,30 @@
 [
     {
+        "version": "1.8.2",
+        "sections":
+        [
+            {
+                "title": "openblocks.gui.bugfixes",
+                "lines":
+                [
+                    "Fix damage calculations of Last Stand enchantment"
+                ]
+            },
+            {
+                "title": "openblocks.gui.tweaks",
+                "lines":
+                [
+                    "Store player XP inside graves (courtesy of Pocketkid2)",
+                    "Improve hang glider deployment and outdoor checks, only decrease height when exposed to rain",
+                    "Add config setting for ignoring elevator colors for more variation",
+                    "Sneaking on XP drains increases draining speed of player XP",
+                    "Sprinklers have sounds and moisturize farmland",
+                    "Enhance tile entity checks for magnet and golden egg"
+                ]
+            }
+        ]
+    },
+    {
         "version": "1.8.1",
         "sections":
         [
