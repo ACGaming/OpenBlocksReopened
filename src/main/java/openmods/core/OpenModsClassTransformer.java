@@ -21,7 +21,6 @@ import openmods.config.simple.ConfigProcessor;
 import openmods.config.simple.ConfigProcessor.UpdateListener;
 import openmods.core.fixes.HorseNullFix;
 import openmods.include.IncludingClassVisitor;
-import openmods.renderer.PlayerRendererHookVisitor;
 import openmods.renderer.PreWorldRenderHookVisitor;
 import openmods.utils.StateTracker;
 import openmods.utils.StateTracker.StateUpdater;
@@ -90,24 +89,6 @@ public class OpenModsClassTransformer implements IClassTransformer {
 	}
 
 	public void addConfigValues(ConfigProcessor config) {
-		config.addEntry("activate_player_render_hook", 0, "true", new ConfigOption("player_render_hook") {
-			@Override
-			protected void onActivate(final StateUpdater<TransformerState> state) {
-				vanillaPatches.put("net.minecraft.client.renderer.entity.RenderPlayer", new TransformProvider(ClassWriter.COMPUTE_FRAMES) {
-					@Override
-					public ClassVisitor createVisitor(String name, ClassVisitor cv) {
-						Log.debug("Trying to apply player render hook (class: %s)", name);
-						state.update(TransformerState.ACTIVATED);
-						return new PlayerRendererHookVisitor(name, cv, createResultListener(state));
-					}
-				});
-			}
-		},
-				"Purpose: add hook to player rendering code",
-				"Modified class: net.minecraft.client.renderer.entity.RenderPlayer",
-				"Known users: OpenBlocks hangglider",
-				"When disabled: code may fallback to less compatible mechanism (like replacing renderer)");
-
 		config.addEntry("hook_pre_world_rendering", 0, "true", new ConfigOption("pre_world_render_hook") {
 			@Override
 			protected void onActivate(final StateUpdater<TransformerState> state) {
