@@ -1,5 +1,39 @@
 [
     {
+        "version": "1.8.3",
+        "sections":
+        [
+            {
+                "title": "openblocks.gui.features",
+                "lines":
+                [
+                    "Update project infrastructure - no more dependency on OpenModsLib!",
+                    "Add enchantment descriptions",
+                    "Add Japanese translation"
+                ]
+            },
+            {
+                "title": "openblocks.gui.bugfixes",
+                "lines":
+                [
+                    "Add proper language entries for glyph entities"
+                ]
+            },
+            {
+                "title": "openblocks.gui.tweaks",
+                "lines":
+                [
+                    "Update Korean translation",
+                    "Close GUIs with inventory keybind",
+                    "Rework hang glider player rendering",
+                    "Add missing guidebook buttons",
+                    "Adjust guidebook welcome/credit texts",
+                    "Utilize GlStateManager for hang glider renderer"
+                ]
+            }
+        ]
+    },
+    {
         "version": "1.8.2",
         "sections":
         [
