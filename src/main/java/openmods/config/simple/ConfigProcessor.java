@@ -7,9 +7,9 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import openmods.Log;
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -17,16 +17,16 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import openmods.Log;
 
 public class ConfigProcessor {
 
 	public interface UpdateListener {
-		public void valueSet(String value);
+		void valueSet(String value);
 	}
 
 	private static class EntryMeta {
@@ -55,7 +55,7 @@ public class ConfigProcessor {
 		}
 	}
 
-	private Map<String, EntryMeta> entries = Maps.newHashMap();
+	private final Map<String, EntryMeta> entries = Maps.newHashMap();
 
 	public void addEntry(String name, int version, String defaultValue, UpdateListener listener, String... comment) {
 		Preconditions.checkNotNull(listener);
@@ -130,21 +130,10 @@ public class ConfigProcessor {
 	}
 
 	private static void writeFile(File output, Map<String, EntryMeta> values) {
-		try {
-			OutputStream stream = new FileOutputStream(output);
-
-			try {
-				Writer writer = new OutputStreamWriter(stream, Charsets.UTF_8);
-
-				try {
-					Gson gson = new GsonBuilder().setPrettyPrinting().create();
-					gson.toJson(values, writer);
-				} finally {
-					writer.close();
-				}
-
-			} finally {
-				stream.close();
+		try (OutputStream stream = Files.newOutputStream(output.toPath())) {
+			try (Writer writer = new OutputStreamWriter(stream, Charsets.UTF_8)) {
+				Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				gson.toJson(values, writer);
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -153,17 +142,10 @@ public class ConfigProcessor {
 
 	private static Map<String, EntryMeta> readFile(File input) {
 		if (!input.exists()) return null;
-		try {
-			InputStream stream = new FileInputStream(input);
-
-			try {
-				Reader reader = new InputStreamReader(stream, Charsets.UTF_8);
-				Gson gson = new Gson();
-				return gson.fromJson(reader, EntryCollection.class);
-
-			} finally {
-				stream.close();
-			}
+		try (InputStream stream = Files.newInputStream(input.toPath())) {
+			Reader reader = new InputStreamReader(stream, Charsets.UTF_8);
+			Gson gson = new Gson();
+			return gson.fromJson(reader, EntryCollection.class);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
