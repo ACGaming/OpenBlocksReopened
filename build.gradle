@@ -60,6 +60,11 @@ minecraft {
         args << '-Dmixin.checks.interfaces=true'
         args << '-Dmixin.debug.export=true'
     }
+    if (project.debug_class_loading.toBoolean()) {
+        args << '-Dlegacy.debugClassLoading=true'
+        args << '-Dlegacy.debugClassLoadingFiner=true'
+        args << '-Dlegacy.debugClassLoadingSave=true'
+    }
     extraRunJvmArguments.addAll(args)
 
     // Include and use dependencies' Access Transformer files
