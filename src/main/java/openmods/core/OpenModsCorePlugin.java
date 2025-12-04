@@ -1,6 +1,8 @@
 package openmods.core;
 
 import java.util.Map;
+
+import info.openmods.openblocks.Tags;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
@@ -15,8 +17,8 @@ public class OpenModsCorePlugin implements IFMLLoadingPlugin {
 	public static final String CORE_MARKER = "OpenModsCoreLoaded";
 
 	public OpenModsCorePlugin() {
-		Log.debug("<OpenModsLib %s>\\o", "$LIB-VERSION$");
-		Launch.blackboard.put(CORE_MARKER, "$LIB-VERSION$");
+		Log.debug("<OpenModsLib %s>\\o", Tags.LIB_VERSION);
+		Launch.blackboard.put(CORE_MARKER, Tags.LIB_VERSION);
 	}
 
 	@Override

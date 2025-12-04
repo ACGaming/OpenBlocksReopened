@@ -3,6 +3,8 @@ package openmods.core;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import java.util.Arrays;
+
+import info.openmods.openblocks.Tags;
 import net.minecraftforge.fml.common.DummyModContainer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.ICrashCallable;
@@ -17,7 +19,7 @@ public class OpenModsCore extends DummyModContainer {
 		ModMetadata meta = getMetadata();
 		meta.modId = "openmodscore";
 		meta.name = "OpenModsLib Core";
-		meta.version = "$LIB-VERSION$";
+		meta.version = Tags.LIB_VERSION;
 		meta.authorList = Arrays.asList("Mikee", "NeverCast", "boq");
 		meta.url = "https://openmods.info/";
 		meta.description = "This is where the magic happens";

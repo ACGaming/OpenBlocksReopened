@@ -1,7 +1,25 @@
 {
   "modListVersion": "2",
-  "modList":
-  [
+  "modList": [
+    {
+      "modid": "openmods",
+      "name": "OpenModsLib",
+      "description": "Boring stuff for all that silly Open* mods",
+      "version": "0.12.3",
+      "mcversion": "${mcversion}",
+      "url": "https://openmods.info",
+      "authorList": [
+        "Mikee",
+        "NeverCast",
+        "boq",
+        "Lyqyd",
+        "WaitingIdly"
+      ],
+      "useDependencyInformation": true,
+      "dependants": [
+        "openblocks"
+      ]
+    },
     {
       "modid": "openblocks",
       "name": "OpenBlocks Reopened",
@@ -9,19 +27,18 @@
       "version": "${version}",
       "mcversion": "${mcversion}",
       "url": "https://www.curseforge.com/minecraft/mc-mods/openblocks-reopened",
-      "updateUrl": "",
       "authorList": [
         "Mikee",
         "NeverCast",
         "boq",
         "Lyqyd",
-        "ACGaming"
+        "ACGaming",
+        "WaitingIdly"
       ],
-      "credits": "",
-      "logoFile": "",
-      "screenshots": [
-      ],
-      "parent": ""
+      "useDependencyInformation": true,
+      "dependencies": [
+        "openmods"
+      ]
     }
   ]
 }

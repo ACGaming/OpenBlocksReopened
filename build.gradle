@@ -12,7 +12,9 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 mod_id = project.mod_id
-archivesBaseName = project.archives_base_name
+archives_base_name = project.archives_base_name
+lib_version = project.lib_version
+api_version = project.api_version
 
 // Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
 java {
@@ -69,6 +71,8 @@ minecraft {
     injectedTags.put('MOD_ID', project.mod_id)
     injectedTags.put('NAME', project.mod_name)
     injectedTags.put('VERSION', project.version)
+    injectedTags.put('LIB_VERSION', project.lib_version)
+    injectedTags.put('API_VERSION', project.api_version)
 }
 
 // Generate a group.mod_id.Tags class
