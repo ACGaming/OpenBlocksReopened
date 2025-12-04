@@ -12,7 +12,7 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 mod_id = project.mod_id
-archives_base_name = project.archives_base_name
+archivesBaseName = project.archives_base_name
 lib_version = project.lib_version
 api_version = project.api_version
 
