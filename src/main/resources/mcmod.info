@@ -16,6 +16,9 @@
         "WaitingIdly"
       ],
       "useDependencyInformation": true,
+      "dependencies": [
+        "mixinbooter"
+      ],
       "dependants": [
         "openblocks"
       ]
@@ -37,6 +40,7 @@
       ],
       "useDependencyInformation": true,
       "dependencies": [
+        "mixinbooter",
         "openmods"
       ]
     }

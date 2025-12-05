@@ -1,19 +1,22 @@
 package openmods.core;
 
-import java.util.Map;
-
 import info.openmods.openblocks.Tags;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.SortingIndex;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 import openmods.Log;
+import openmods.mixins.Mixins;
+import zone.rong.mixinbooter.Context;
+import zone.rong.mixinbooter.IEarlyMixinLoader;
+
+import java.util.List;
+import java.util.Map;
 
 //must be lower than all dependent ones
 @SortingIndex(16)
 @TransformerExclusions({ "openmods.asm.", "openmods.include.", "openmods.core.", "openmods.injector.", "openmods.Log" })
-public class OpenModsCorePlugin implements IFMLLoadingPlugin {
-
+public class OpenModsCorePlugin implements IFMLLoadingPlugin, IEarlyMixinLoader {
 	public static final String CORE_MARKER = "OpenModsCoreLoaded";
 
 	public OpenModsCorePlugin() {
@@ -46,4 +49,13 @@ public class OpenModsCorePlugin implements IFMLLoadingPlugin {
 		return null;
 	}
 
+	@Override
+	public List<String> getMixinConfigs() {
+		return Mixins.getEarlyMixinConfigs();
+	}
+
+	@Override
+	public boolean shouldMixinConfigQueue(Context context) {
+		return Mixins.shouldEarlyMixinConfigQueue(context);
+	}
 }
