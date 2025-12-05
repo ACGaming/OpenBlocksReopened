@@ -176,7 +176,6 @@ import openblocks.common.tileentity.TileEntityItemDropper;
 import openblocks.common.tileentity.TileEntityPaintCan;
 import openblocks.common.tileentity.TileEntityPaintMixer;
 import openblocks.common.tileentity.TileEntityProjector;
-import openblocks.common.tileentity.TileEntitySky;
 import openblocks.common.tileentity.TileEntitySprinkler;
 import openblocks.common.tileentity.TileEntityTank;
 import openblocks.common.tileentity.TileEntityTarget;
@@ -382,7 +381,7 @@ public class OpenBlocks {
 		@RegisterBlock(type = BlockDrawingTable.class, id = "drawing_table", tileEntity = TileEntityDrawingTable.class, legacyIds = "drawingtable")
 		public static Block drawingTable;
 
-		@RegisterBlock(type = BlockSky.class, id = "sky", tileEntity = TileEntitySky.class, itemBlock = ItemSkyBlock.class, unlocalizedName = "sky.normal")
+		@RegisterBlock(type = BlockSky.class, id = "sky", itemBlock = ItemSkyBlock.class, unlocalizedName = "sky.normal")
 		public static Block sky;
 
 		@RegisterBlock(type = BlockXPShower.class, id = "xp_shower", tileEntity = TileEntityXPShower.class, legacyIds = "xpshower")

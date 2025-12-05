@@ -1,20 +1,24 @@
 package openblocks.common.block;
 
-import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import openblocks.client.renderer.skyblock.SkyBlockCustomLayer;
+import openblocks.client.renderer.skyblock.SkyBlockRenderer;
 import openmods.block.OpenBlock;
 import openmods.infobook.BookDocumentation;
+
+import java.util.Random;
 
 @BookDocumentation(customName = "sky.normal")
 public class BlockSky extends OpenBlock {
@@ -46,14 +50,14 @@ public class BlockSky extends OpenBlock {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState()
-				.withProperty(POWERED, (meta & MASK_POWERED) != 0)
-				.withProperty(INVERTED, (meta & MASK_INVERTED) != 0);
+			.withProperty(POWERED, (meta & MASK_POWERED) != 0)
+			.withProperty(INVERTED, (meta & MASK_INVERTED) != 0);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		final int isPowered = state.getValue(POWERED)? MASK_POWERED : 0;
-		final int isInverted = state.getValue(INVERTED)? MASK_INVERTED : 0;
+		final int isPowered = state.getValue(POWERED) ? MASK_POWERED : 0;
+		final int isInverted = state.getValue(INVERTED) ? MASK_INVERTED : 0;
 
 		return isPowered | isInverted;
 	}
@@ -100,12 +104,19 @@ public class BlockSky extends OpenBlock {
 	@Override
 	@SuppressWarnings("deprecation")
 	public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World world, BlockPos pos) {
-		return isActive(state)? EMPTY : super.getSelectedBoundingBox(state, world, pos);
+		return isActive(state) ? EMPTY : super.getSelectedBoundingBox(state, world, pos);
 	}
 
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return isActive(state)? EnumBlockRenderType.ENTITYBLOCK_ANIMATED : EnumBlockRenderType.MODEL;
+		return EnumBlockRenderType.MODEL;
+	}
+
+	@Override
+	public boolean canRenderInLayer(IBlockState state, BlockRenderLayer layer) {
+		return isActive(state) && SkyBlockRenderer.INSTANCE.isActive()
+			   ? layer == SkyBlockCustomLayer.instance().getBlockRenderLayer()
+			   : layer == BlockRenderLayer.SOLID;
 	}
 
 	@Override

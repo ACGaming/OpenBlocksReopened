@@ -11,6 +11,11 @@ public enum Mixins {
 			.early("mixins.openmods.customrenderlayer.minecraft.json")
 			.lateMod(Mods.NOTHIRIUM, "mixins.openmods.customrenderlayer.nothirium.json")
 	),
+	SKY_BLOCK_RENDERING(
+		Static.MIXIN_HANDLER.create("sky_block_rendering")
+			.setDescription("Adds skybox rendering for sky blocks", "Requires \"custom_render_layers\"")
+			.early("mixins.openblocks.skyblock.minecraft.json")
+	),
 	;
 
 	private static class Static {
