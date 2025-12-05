@@ -5,6 +5,12 @@ import zone.rong.mixinbooter.Context;
 import java.util.List;
 
 public enum Mixins {
+	CUSTOM_RENDER_LAYERS(
+		Static.MIXIN_HANDLER.create("custom_render_layers")
+			.setDescription("Adds support for custom render layers")
+			.early("mixins.openmods.customrenderlayer.minecraft.json")
+			.lateMod(Mods.NOTHIRIUM, "mixins.openmods.customrenderlayer.nothirium.json")
+	),
 	;
 
 	private static class Static {

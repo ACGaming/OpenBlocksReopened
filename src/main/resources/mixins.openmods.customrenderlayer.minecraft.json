@@ -1,0 +1,13 @@
+{
+  "package": "openmods.mixins.customrenderlayer.minecraft",
+  "refmap": "openblocks.refmap.json",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "BlockRenderLayerMixin"
+  ],
+  "client": [
+    "EntityRendererMixin",
+    "RegionRenderCacheBuilderMixin"
+  ]
+}
