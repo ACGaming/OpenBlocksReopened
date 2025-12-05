@@ -3,6 +3,7 @@ package openmods.renderer.shaders;
 import com.google.common.collect.ImmutableList;
 import gnu.trove.map.TObjectIntMap;
 import gnu.trove.map.hash.TObjectIntHashMap;
+
 import java.util.List;
 
 public class ShaderProgram {
@@ -15,8 +16,7 @@ public class ShaderProgram {
 		public int get(Object key) {
 			int index = index(key);
 			if (index < 0) {
-				@SuppressWarnings("unchecked")
-				final T k = (T)key;
+				@SuppressWarnings("unchecked") final T k = (T) key;
 				final int result = computeValue(k);
 				put(k, result);
 				return result;
@@ -63,11 +63,11 @@ public class ShaderProgram {
 		ShaderHelper.methods().glDeleteProgram(program);
 	}
 
-	private int getUniformLocation(String uniform) {
+	public int getUniformLocation(String uniform) {
 		return uniforms.get(uniform);
 	}
 
-	private int getAttributeLocation(String attribute) {
+	public int getAttributeLocation(String attribute) {
 		return attributes.get(attribute);
 	}
 
@@ -79,6 +79,11 @@ public class ShaderProgram {
 	public void uniform1f(String name, float val) {
 		final int location = getUniformLocation(name);
 		if (location >= 0) ShaderHelper.methods().glUniform1f(location, val);
+	}
+
+	public void uniform2f(String name, float u, float v) {
+		final int location = getUniformLocation(name);
+		if (location >= 0) ShaderHelper.methods().glUniform2f(location, u, v);
 	}
 
 	public void uniform3f(String name, float x, float y, float z) {

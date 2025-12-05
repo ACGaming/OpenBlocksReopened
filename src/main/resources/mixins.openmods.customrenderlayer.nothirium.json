@@ -1,0 +1,12 @@
+{
+  "package": "openmods.mixins.customrenderlayer.nothirium",
+  "refmap": "openblocks.refmap.json",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ChunkRendererGLMixin",
+    "ChunkRenderPassMixin"
+  ],
+  "client": [
+  ]
+}

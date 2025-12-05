@@ -60,6 +60,11 @@ minecraft {
         args << '-Dmixin.checks.interfaces=true'
         args << '-Dmixin.debug.export=true'
     }
+    if (project.debug_class_loading.toBoolean()) {
+        args << '-Dlegacy.debugClassLoading=true'
+        args << '-Dlegacy.debugClassLoadingFiner=true'
+        args << '-Dlegacy.debugClassLoadingSave=true'
+    }
     extraRunJvmArguments.addAll(args)
 
     // Include and use dependencies' Access Transformer files
@@ -133,6 +138,14 @@ dependencies {
     //compileOnly group: 'info.openmods', name: 'calc', version: '0.2'
     compileOnly "info.computercraft:ComputerCraft-API:1.80pr0"
     compileOnly "info.openmods:OpenPeripheralCore-API:3.5-unstable"
+
+    // debug stuff
+    compileOnly rfg.deobf("curse.maven:renderlib-624967:6461209")
+    compileOnly rfg.deobf("curse.maven:nothirium-624960:7207682")
+    //runtimeOnly rfg.deobf("curse.maven:renderlib-624967:6461209")
+    //runtimeOnly rfg.deobf("curse.maven:nothirium-624960:7207682")
+
+    //runtimeOnly rfg.deobf("curse.maven:spark-361579:3542217")
 }
 
 // Adds Access Transformer files to tasks

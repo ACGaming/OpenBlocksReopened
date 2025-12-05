@@ -3,12 +3,8 @@ package openmods.renderer.shaders;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.io.IOUtils;
@@ -16,14 +12,25 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.OpenGLException;
 
-public class ShaderProgramBuilder {
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
+public class ShaderProgramBuilder {
 	private final Map<ResourceLocation, Integer> shadersToLoad = Maps.newLinkedHashMap();
+	private final Object2IntMap<String> attributes = new Object2IntOpenHashMap<>();
 
 	public ShaderProgramBuilder() {}
 
 	public void addShader(ResourceLocation source, int type) {
 		shadersToLoad.put(source, type);
+	}
+
+	public void addAttribute(String name, int location) {
+		attributes.put(name, location);
 	}
 
 	public ShaderProgram build() {
@@ -37,14 +44,22 @@ public class ShaderProgramBuilder {
 			shaders.add(shader);
 		}
 
+		for (Map.Entry<String, Integer> entry : attributes.entrySet()) {
+			GL20.glBindAttribLocation(program, entry.getValue(), entry.getKey());
+		}
+
 		ShaderHelper.methods().glLinkProgram(program);
-		if (ShaderHelper.methods().glGetProgrami(program, GL20.GL_LINK_STATUS) == GL11.GL_FALSE) throw new OpenGLException("Shader link error: " + ShaderHelper.methods().getProgramLogInfo(program));
+		if (ShaderHelper.methods().glGetProgrami(program, GL20.GL_LINK_STATUS) == GL11.GL_FALSE) {
+			throw new OpenGLException("Shader link error: " + ShaderHelper.methods().getProgramLogInfo(program));
+		}
 
 		for (Integer shader : shaders)
 			ShaderHelper.methods().glDetachShader(program, shader);
 
 		ShaderHelper.methods().glValidateProgram(program);
-		if (ShaderHelper.methods().glGetProgrami(program, GL20.GL_VALIDATE_STATUS) == GL11.GL_FALSE) throw new OpenGLException("Shader validate error: " + ShaderHelper.methods().getProgramLogInfo(program));
+		if (ShaderHelper.methods().glGetProgrami(program, GL20.GL_VALIDATE_STATUS) == GL11.GL_FALSE) {
+			throw new OpenGLException("Shader validate error: " + ShaderHelper.methods().getProgramLogInfo(program));
+		}
 
 		return new ShaderProgram(program, shaders);
 	}
@@ -57,7 +72,9 @@ public class ShaderProgramBuilder {
 
 			ShaderHelper.methods().glShaderSource(shader, readShaderSource(source));
 			ShaderHelper.methods().glCompileShader(shader);
-			if (ShaderHelper.methods().glGetShaderi(shader, GL20.GL_COMPILE_STATUS) == GL11.GL_FALSE) throw new OpenGLException("Shader compile error: " + ShaderHelper.methods().getShaderLogInfo(shader));
+			if (ShaderHelper.methods().glGetShaderi(shader, GL20.GL_COMPILE_STATUS) == GL11.GL_FALSE) {
+				throw new OpenGLException("Shader compile error: " + ShaderHelper.methods().getShaderLogInfo(shader));
+			}
 
 			return shader;
 		} catch (Throwable t) {
