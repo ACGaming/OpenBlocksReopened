@@ -24,7 +24,7 @@ public class VanillaAnvilLogic {
 		this.materialCost = -1;
 		this.outputStack = ItemStack.EMPTY;
 
-		final String repairedItemName = itemName.orNull();
+		final String repairedItemName = itemName.or("");
 
 		// adapted/copied from ContainerRepair.updateRepairOutput
 		this.maximumCost = 1;
