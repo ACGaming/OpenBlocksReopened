@@ -31,6 +31,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
+import openblocks.Config;
 import openblocks.OpenBlocks;
 import openblocks.OpenBlocksGuiHandler;
 import openblocks.common.entity.ai.EntityAICollectItem;
@@ -41,7 +42,7 @@ import openmods.utils.InventoryUtils;
 @VisibleForDocumentation
 public class EntityLuggage extends EntityTameable implements IEntityAdditionalSpawnData {
 
-	private static final DataParameter<Integer> PROPERTY_INV_SIZE = EntityDataManager.<Integer> createKey(EntityLuggage.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> PROPERTY_INV_SIZE = EntityDataManager.createKey(EntityLuggage.class, DataSerializers.VARINT);
 
 	public static final int SIZE_SPECIAL = 54;
 
@@ -215,7 +216,7 @@ public class EntityLuggage extends EntityTameable implements IEntityAdditionalSp
 
 	@Override
 	protected void playStepSound(BlockPos pos, Block blockIn) {
-		playSound(OpenBlocks.Sounds.ENTITY_LUGGAGE_WALK, 0.3F, 0.7F + (world.rand.nextFloat() * 0.5f));
+		if (Config.luggagePlayWalkingSound) playSound(OpenBlocks.Sounds.ENTITY_LUGGAGE_WALK, 0.3F, 0.7F + (world.rand.nextFloat() * 0.5f));
 	}
 
 	public void storeItemTag(NBTTagCompound itemTag) {
@@ -246,16 +247,6 @@ public class EntityLuggage extends EntityTameable implements IEntityAdditionalSp
 	@Override
 	public boolean isEntityInvulnerable(DamageSource dmg) {
 		return true;
-	}
-
-	@Override
-	public void setHealth(float health) {
-		// NO-OP
-	}
-
-	@Override
-	protected boolean canDespawn() {
-		return false;
 	}
 
 	@Override

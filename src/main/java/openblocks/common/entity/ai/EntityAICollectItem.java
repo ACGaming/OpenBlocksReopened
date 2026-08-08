@@ -7,6 +7,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraftforge.items.ItemHandlerHelper;
+import openblocks.Config;
 import openblocks.OpenBlocks;
 import openblocks.common.entity.EntityLuggage;
 import openmods.utils.ItemUtils;
@@ -27,7 +28,7 @@ public class EntityAICollectItem extends EntityAIBase {
 
 	@Override
 	public boolean shouldExecute() {
-		if (!pathFinder.noPath()) return false;
+		if (!Config.luggageCollectItems || !pathFinder.noPath()) return false;
 
 		if (luggage.world != null) {
 			List<EntityItem> items = luggage.world.getEntitiesWithinAABB(EntityItem.class, luggage.getEntityBoundingBox().grow(10));
@@ -60,8 +61,7 @@ public class EntityAICollectItem extends EntityAIBase {
 
 	@Override
 	public boolean shouldContinueExecuting() {
-		return luggage.isEntityAlive() && !pathFinder.noPath()
-				&& !targetItem.isDead;
+		return Config.luggageCollectItems && luggage.isEntityAlive() && !pathFinder.noPath() && !targetItem.isDead;
 	}
 
 	@Override

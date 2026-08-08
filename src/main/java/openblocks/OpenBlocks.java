@@ -647,6 +647,7 @@ public class OpenBlocks {
 		@Override
 		protected void populateConfig(Configuration config) {
 			ConfigProcessing.processAnnotations(MOD_ID, config, Config.class);
+			config.save();
 		}
 
 		@Override

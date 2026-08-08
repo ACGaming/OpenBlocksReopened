@@ -420,6 +420,14 @@ public class Config {
 	@ConfigProperty(category = "glyphs", name = "showInCreativeSearch", comment = "Should glyphs be added to creative search GUI")
 	public static boolean showGlypsInSearch = false;
 
+	@OnLineModifiable
+	@ConfigProperty(category = "luggage", name = "collectItems", comment = "Should luggage collect nearby dropped items")
+	public static boolean luggageCollectItems = true;
+
+	@OnLineModifiable
+	@ConfigProperty(category = "luggage", name = "playWalkingSound", comment = "Should luggage play its walking sound")
+	public static boolean luggagePlayWalkingSound = true;
+
 	public static void register() {
 		if (OpenBlocks.Items.generic != null) {
 			OpenBlocks.Items.generic.registerItems(MetasGeneric.values());
