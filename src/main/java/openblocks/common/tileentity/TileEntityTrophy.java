@@ -10,6 +10,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import openblocks.common.TrophyHandler.Trophy;
 import openblocks.common.item.ItemTrophyBlock;
 import openmods.api.IActivateAwareTile;
@@ -36,6 +39,12 @@ public class TileEntityTrophy extends SyncedTileEntity implements IPlaceAwareTil
 
 	public Trophy getTrophy() {
 		return trophyIndex.get();
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public AxisAlignedBB getRenderBoundingBox() {
+		return super.getRenderBoundingBox().grow(0.5);
 	}
 
 	@Override
