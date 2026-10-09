@@ -123,7 +123,7 @@ dependencies {
     }
     if (project.use_mixins.toBoolean()) {
         // Change your mixin refmap name here:
-        String mixin = modUtils.enableMixins('zone.rong:mixinbooter:10.7', "mixins.${project.mod_id}.refmap.json")
+        String mixin = modUtils.enableMixins('zone.rong:mixinbooter:10.7', "${project.mod_id}.refmap.json")
         api(mixin) {
             transitive = false
         }
