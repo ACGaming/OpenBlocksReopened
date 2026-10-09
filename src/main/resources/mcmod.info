@@ -2,6 +2,27 @@
   "modListVersion": "2",
   "modList": [
     {
+      "modid": "openblocks",
+      "name": "OpenBlocks Reopened",
+      "description": "An open source random collection of blocks and miscellaneous cool stuff",
+      "version": "${version}",
+      "mcversion": "${mcversion}",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/openblocks-reopened",
+      "authorList": [
+        "Mikee",
+        "NeverCast",
+        "boq",
+        "Lyqyd",
+        "ACGaming",
+        "WaitingIdly"
+      ],
+      "useDependencyInformation": true,
+      "dependencies": [
+        "mixinbooter",
+        "openmods"
+      ]
+    },
+    {
       "modid": "openmods",
       "name": "OpenModsLib",
       "description": "Boring stuff for all that silly Open* mods",
@@ -21,27 +42,6 @@
       ],
       "dependants": [
         "openblocks"
-      ]
-    },
-    {
-      "modid": "openblocks",
-      "name": "OpenBlocks Reopened",
-      "description": "An open source random collection of blocks and miscellaneous cool stuff",
-      "version": "${version}",
-      "mcversion": "${mcversion}",
-      "url": "https://www.curseforge.com/minecraft/mc-mods/openblocks-reopened",
-      "authorList": [
-        "Mikee",
-        "NeverCast",
-        "boq",
-        "Lyqyd",
-        "ACGaming",
-        "WaitingIdly"
-      ],
-      "useDependencyInformation": true,
-      "dependencies": [
-        "mixinbooter",
-        "openmods"
       ]
     }
   ]
