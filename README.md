@@ -8,11 +8,12 @@ As of v1.8.3, **OpenModsLib** is no longer required!
 
 * Player XP gets stored inside graves (courtesy of [Pocketkid2](https://github.com/Pocketkid2))
 * Improved hang glider deployment and outdoor checks, only decreasing height when exposed to rain
-* Config setting for ignoring elevator colors for more variation
+* Additional config settings for elevator and luggage
 * Fixed damage calculations of the Last Stand enchantment
 * Sneaking on XP drains increases draining speed of player XP
 * Sprinklers have sounds and moisturize farmland
 * Enhanced tile entity checks for the magnet and golden egg
+* Updated translations
 
 # OPENBLOCKS
 
